@@ -1,6 +1,6 @@
 # Out-of-step recovery and redox resilience in soils
 
-Code and data for the Perspective by M. Ghotbi, B. C. Kolody, M. Ghotbi and E. Holtgrewe-Stukenbrock (submitted to *Nature Communications*).
+Code and data for the Perspective by M. Ghotbi, B. C. Kolody, M. Ghotbi and E. Holtgrewe-Stukenbrock  
 
 The repository reproduces every quantitative figure and every number quoted in the text:
 
