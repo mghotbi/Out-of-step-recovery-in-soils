@@ -1,5 +1,13 @@
 # Out-of-step recovery and redox resilience in soils
 
+[![Perspective](https://img.shields.io/badge/Article-Perspective-81619D?style=flat-square)](#out-of-step-recovery-and-redox-resilience-in-soils)
+[![Soil redox resilience](https://img.shields.io/badge/Topic-Soil%20redox%20resilience-397F89?style=flat-square)](#out-of-step-recovery-and-redox-resilience-in-soils)
+[![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white)](#reproduce)
+[![R](https://img.shields.io/badge/R-Base%20R-276DC3?style=flat-square&logo=r&logoColor=white)](#reproduce)
+[![Code license](https://img.shields.io/badge/Code-MIT-8FBC8F?style=flat-square)](#licence)
+[![Data licenses](https://img.shields.io/badge/Data-Source%20licenses-lightgrey?style=flat-square)](#source-data-and-reuse)
+
+
 Code and data for the Perspective by M. Ghotbi, B. C. Kolody, M. Ghotbi and E. Holtgrewe-Stukenbrock  
 
 The repository reproduces every quantitative figure and every number quoted in the text:
