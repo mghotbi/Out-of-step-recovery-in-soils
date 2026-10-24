@@ -1,0 +1,25 @@
+"check","value","expected","ok"
+"SI example: soil A, 48 h (mmol e-/kg)",15.1491985966526,15.15,TRUE
+"SI example: soil B, 48 h (mmol e-/kg)",68.4066585264852,68.41,TRUE
+"SI example: ratio B/A",4.51552985394227,4.52,TRUE
+"P1: two-pool half-time, alpha=(1,1) (h)",3.39871749149559,3.4,TRUE
+"P1: proportional access, half-time unchanged",0,0,TRUE
+"P1: selective access alpha=(1,0.1) (h)",0.796745737973651,0.8,TRUE
+"P1: proportional change, max |normalized diff|",0,0,TRUE
+"P2: crossing criterion satisfied (1=yes)",1,1,TRUE
+"P2: crossing time tau* (h)",20.2732553661999,20.27,TRUE
+"P2: criterion vs brute force (2000 random pairs)",0,0,TRUE
+"P3: escape, on-time sink (umol N)",1.09090909090909,1.09,TRUE
+"P3: escape, 4-h lag (umol N)",1.73018223668763,1.73,TRUE
+"Fig 3d: escape, 6-h lag / dormant sink (umol N)",2.44374214630933,2.44,TRUE
+"Fig 3d: cumulative ratio dormant/active",2.24009696745022,2.24,TRUE
+"P3: escape L=4, analytic minus ODE",-0.000173792068834944,0,TRUE
+"P3: exact debt, 4-h lag (umol N)",0.639273145778539,0.639,TRUE
+"P3: short-lag approximation, 4-h lag",0.727272727272727,0.727,TRUE
+"P3: approximation overestimate (%)",13.7655682981986,13.8,TRUE
+"P3: debt ceiling, sink never returns",10.9090909090909,10.909,TRUE
+"P4: carried legacy B at R=1",0.581976706869326,0.582,TRUE
+"P4: post-event A at R=1",1.58197670686933,1.582,TRUE
+"P4: B at R=10",9.50833194477505,9.508,TRUE
+"P4: B = 1 at R = 1/ln2",1,1,TRUE
+"P4: iterated series converges to B (R=2)",0,0,TRUE

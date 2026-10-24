@@ -1,0 +1,9 @@
+plant,compartment,reactive_Fe,reactive_Fe_sd,available_P,available_P_sd
+rice,iron plaque,381.35,26.37508,0.801,0.02687
+rice,rhizosphere,162.7,10.32376,0.41,0.01414
+rice,bulk soil,110.0,14.14214,0.215,0.02121
+reed,iron plaque,467.5,24.74874,0.6405,0.01485
+reed,rhizosphere,350.0,42.42641,0.501,0.07212
+reed,bulk soil,315.0,21.2132,0.316,0.00566
+wheat,rhizosphere,83.0,18.38478,0.229,0.04101
+wheat,bulk soil,80.5,13.43503,0.2355,0.02051

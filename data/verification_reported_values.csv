@@ -1,0 +1,38 @@
+check,computed,quoted,tolerance,pass_
+EEC rhizo/bulk,1.2452467434128796,1.25,0.005,True
+EEC plaque/bulk,1.9209072301558192,1.92,0.005,True
+EEC bulk/plaque,0.5205873476351497,0.52,0.005,True
+poorly crystalline plaque %,74.89825,75.0,0.5,True
+poorly crystalline rhizo %,32.33742,30.0,3.0,True
+poorly crystalline bulk %,30.19177,30.0,3.0,True
+goethite ratio,1.6195547674945543,1.62,0.005,True
+Patzner palsa mineral %,91.11350552301235,91.0,0.5,True
+Patzner bog transition %,65.86285444976829,66.0,0.5,True
+FeII swing Rhizosphere/plaque,0.40121740437363795,0.4,0.005,True
+FeII swing Bulk soil/plaque,0.07552416021642712,0.08,0.005,True
+P swing Rhizosphere/plaque,0.5156330616035496,0.52,0.005,True
+P swing Bulk soil/plaque,0.1444123413476421,0.14,0.005,True
+half-time min,13.9218688493553,14.0,0.5,True
+half-time max,78.3216852083761,78.0,0.5,True
+Spearman rho complete record,0.9833333333333333,0.98,0.005,True
+Spearman rho 1-24 h,0.3666666666666667,0.37,0.005,True
+P 1-24 h,0.33173980143301507,0.33,0.005,True
+1-24 h integral min,45.2656955008971,45.0,0.5,True
+1-24 h integral max,78.8324434334539,79.0,0.5,True
+N2_final SA/Ox,0.9138187357872376,0.91,0.005,True
+N2_final LA/Ox,0.8568857987027185,0.86,0.005,True
+N2O_integral_1_24h SA/Ox,1.1914150428318786,1.19,0.005,True
+N2O_integral_1_24h LA/Ox,1.2397778169863762,1.24,0.005,True
+PLFA SA/Ox,0.9275311471966536,0.93,0.005,True
+PLFA LA/Ox,0.9392185455393752,0.94,0.005,True
+SA/Ox 1–12 h,0.479883683158494,0.48,0.005,True
+SA/Ox 1–24 h,1.19141504283188,1.19,0.005,True
+"Liu sterilized ('Paddy soil', '0.5-6 h')",42.6647564469914,43.0,0.5,True
+"Liu sterilized ('Paddy soil', '0.5-48 h')",20.3078509937716,20.0,0.5,True
+"Liu sterilized ('Sandy soil', '0.5-6 h')",91.40640741487,91.0,0.5,True
+"Liu sterilized ('Sandy soil', '0.5-48 h')",49.2808890825888,49.0,0.5,True
+tau*,20.273255366199948,20.3,0.05,True
+E(0),1.090909090909091,1.09,0.005,True
+E(4),1.7301822366876305,1.73,0.005,True
+E(6),2.443742146309331,2.44,0.005,True
+B(R=1),0.5819767068693265,0.58,0.005,True

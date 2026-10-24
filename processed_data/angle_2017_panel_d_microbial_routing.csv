@@ -1,6 +1,0 @@
-evidence,support,interpretation,class
-mcrA transcription,1,Methanogenic activity persists,Methanogenesis
-Methanothrix dominance,0.84,84% of recruited mcrA reads,Methanogenesis
-Acetate coupling,0.72,Acetoclastic routing,Carbon routing
-Energy + repair modules,0.68,Active stress persistence,Persistence
-O2 tolerance genes,0.42,Detected but not dominant,Oxygen stress
