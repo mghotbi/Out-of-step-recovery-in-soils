@@ -1,6 +1,6 @@
 # Out-of-step recovery and redox resilience in soils
-
-Release v1.0 is the version used for the submitted manuscript. Code and data for the Perspective by M. Ghotbi, B. C. Kolody, M. Ghotbi, J. A. Gilbert and E. Holtgrewe-Stukenbrock (submitted to *Nature Communications*).
+ 
+Code and data for the Perspective by M. Ghotbi, B. C. Kolody, M. Ghotbi, J. A. Gilbert and E. Holtgrewe-Stukenbrock (submitted to *Nature Communications*).
 
 The repository reproduces every quantitative figure and every number quoted in the text:
 
