@@ -16,8 +16,8 @@ Mitra Ghotbi1,2,*, Bethany C. Kolody3,4, Marjan Ghotbi5,6, Jack A. Gilbert4, Mar
 ⁶ Faculty of Mathematics and Natural Sciences, Kiel University, 24118 Kiel, Germany
 ⁷ College of Science and Engineering, Flinders University, Bedford Park, South Australia, Australia
 ⁸ Max Planck Institute for Evolutionary Biology, August-Thienemann-Str. 2, 24306 Plön, Germany
-*Corresponding authors: Mitra Ghotbi (mitra.ghotbi@gmail.com); Eva Holtgrewe-Stukenbrock (estukenbrock@bot.uni-kiel.de)
-<img width="468" height="250" alt="image" src="https://github.com/user-attachments/assets/b5fb9dd4-0a38-4af5-b08f-1be9aacb9b74" />
+*Corresponding authors: Mitra Ghotbi (mitra.ghotbi@gmail.com);
+Eva Holtgrewe-Stukenbrock (estukenbrock@bot.uni-kiel.de) 
 
 
 The repository reproduces every quantitative figure and every number quoted in the text:
