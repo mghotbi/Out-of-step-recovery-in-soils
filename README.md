@@ -6,8 +6,19 @@
 [![Code license](https://img.shields.io/badge/Code-MIT-8FBC8F?style=flat-square)](#licence)
 [![Data licenses](https://img.shields.io/badge/Data-Source%20licenses-lightgrey?style=flat-square)](#source-data-and-reuse)
 
+ 
+Mitra Ghotbi1,2,*, Bethany C. Kolody3,4, Marjan Ghotbi5,6, Jack A. Gilbert4, Martin Breed7 & Eva Holtgrewe-Stukenbrock1,8,*
+¹ Botanical Institute, Kiel University, Am Botanischen Garten 1–9, 24118 Kiel, Germany
+² Institute of Plant Nutrition and Soil Science, Kiel University, Hermann-Rodewald-Str. 2, 24118 Kiel, Germany
+³ Innovative Genomics Institute, University of California, Berkeley, Berkeley, CA 94720, USA
+⁴ Department of Pediatrics and Scripps Institution of Oceanography, University of California San Diego, San Diego, CA, USA
+⁵ Marine Ecology Research Division, GEOMAR Helmholtz Centre for Ocean Research Kiel, Wischhofstraße 1–3, 24148 Kiel, Germany
+⁶ Faculty of Mathematics and Natural Sciences, Kiel University, 24118 Kiel, Germany
+⁷ College of Science and Engineering, Flinders University, Bedford Park, South Australia, Australia
+⁸ Max Planck Institute for Evolutionary Biology, August-Thienemann-Str. 2, 24306 Plön, Germany
+*Corresponding authors: Mitra Ghotbi (mitra.ghotbi@gmail.com); Eva Holtgrewe-Stukenbrock (estukenbrock@bot.uni-kiel.de)
+<img width="468" height="250" alt="image" src="https://github.com/user-attachments/assets/b5fb9dd4-0a38-4af5-b08f-1be9aacb9b74" />
 
-Code and data for the Perspective by M. Ghotbi, B. C. Kolody, M. Ghotbi, J. A. Gilbert and E. Holtgrewe-Stukenbrock (submitted to *Nature Communications*).
 
 The repository reproduces every quantitative figure and every number quoted in the text:
 
