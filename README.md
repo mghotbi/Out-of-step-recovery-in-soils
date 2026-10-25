@@ -1,14 +1,6 @@
 # Out-of-step recovery and redox resilience in soils
 
-[![Perspective](https://img.shields.io/badge/Article-Perspective-81619D?style=flat-square)](#out-of-step-recovery-and-redox-resilience-in-soils)
-[![Soil redox resilience](https://img.shields.io/badge/Topic-Soil%20redox%20resilience-397F89?style=flat-square)](#out-of-step-recovery-and-redox-resilience-in-soils)
-[![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white)](#reproduce)
-[![R](https://img.shields.io/badge/R-Base%20R-276DC3?style=flat-square&logo=r&logoColor=white)](#reproduce)
-[![Code license](https://img.shields.io/badge/Code-MIT-8FBC8F?style=flat-square)](#licence)
-[![Data licenses](https://img.shields.io/badge/Data-Source%20licenses-lightgrey?style=flat-square)](#source-data-and-reuse)
-
-
-Code and data for the Perspective by M. Ghotbi, B. C. Kolody, M. Ghotbi and E. Holtgrewe-Stukenbrock  
+Release v1.0 is the version used for the submitted manuscript. Code and data for the Perspective by M. Ghotbi, B. C. Kolody, M. Ghotbi, J. A. Gilbert and E. Holtgrewe-Stukenbrock (submitted to *Nature Communications*).
 
 The repository reproduces every quantitative figure and every number quoted in the text:
 
@@ -64,7 +56,7 @@ No new measurements are reported. The source workbooks are third-party data from
 - Patzner, M. S. et al. Iron mineral dissolution releases iron and associated organic carbon during permafrost thaw. *Nat. Commun.* 11, 6329 (2020). https://doi.org/10.1038/s41467-020-20102-6
 - Sennett, L. B. et al. Determining how oxygen legacy affects trajectories of soil denitrifier community dynamics and N₂O emissions. *Nat. Commun.* 15, 7298 (2024). https://doi.org/10.1038/s41467-024-51688-w
 
-One complete-record integral (long-anoxic history, Sennett et al.) differs from the value in the source article; integrating the LA records to 42.0 h reproduces the published value (`python/la_integral_audit.py`), but the source does not state its integration bounds, so the discrepancy is unresolved; it cannot affect the common-window (1–24 h) values and is documented in Supplementary Note 2 and `data/sennett_integration_definition_comparison.csv`.
+One complete-record integral (long-anoxic history, Sennett et al.) differs from the value in the source article; integrating the LA records to 42.0 h reproduces the published value (`python/la_integral_audit.py`), but the source does not state its integration bounds, so the discrepancy is unresolved. A difference confined to the integration endpoint after 24 h would not alter the separately calculated 1–24 h integrals. The discrepancy is documented in Supplementary Note 2 and `data/sennett_integration_definition_comparison.csv`.
 
 ## Licence
 

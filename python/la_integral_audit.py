@@ -19,4 +19,4 @@ lo, hi = 24.0, 70.0
 for _ in range(80):
     mid = (lo + hi) / 2
     lo, hi = (mid, hi) if np.mean([integral(q, mid) for q in la]) < 134 else (lo, mid)
-print(f"LA mean equals 134 when integrated to {mid:.1f} h; common-window (1-24 h) values use only observations within 1-24 h and are unaffected.")
+print(f"LA mean equals 134 when integrated to {mid:.1f} h; a difference confined to the endpoint after 24 h would not alter the separately calculated 1-24 h integrals.")

@@ -45,12 +45,12 @@ ax.set_xlabel("Change in held-out error")
 L(3.95, 1.35, "c")
 ax = fig.add_axes([3.95 / FW, (FH - 3.35) / FH, 3.15 / FW, 1.95 / FH]); ax.set_axis_off(); ax.set_xlim(0, 1); ax.set_ylim(0, 1)
 x0, yb, cw, ch, g = 0.30, 0.05, 0.34, 0.33, 0.02
-cells = [(0, 1, "State\nsufficient", ("#BFE0C6", "#2E7D3E")), (1, 1, "State\nincomplete", ("#DCCDEF", "#6A4C9C")),
+cells = [(0, 1, "Measured state\nadequate for the\ntested prediction", ("#BFE0C6", "#2E7D3E")), (1, 1, "State or model\nincomplete", ("#DCCDEF", "#6A4C9C")),
          (0, 0, "Bulk model\nadequate", ("#D9DEE4", "#4A5563")), (1, 0, "Carrier\nunresolved", ("#F4C9C3", "#A3312A"))]
 for cx, cy, txt, (fc, ec) in cells:
     X = x0 + cx * (cw + g); Y = yb + cy * (ch + g)
     ax.add_patch(Rectangle((X, Y), cw, ch, fc=fc, ec=ec, lw=0.9)); ax.text(X + cw / 2, Y + ch / 2, txt, ha="center", va="center", linespacing=1.15, color=INK)
-ax.text(x0 + cw + g / 2, 0.93, "History adds information?", ha="center", va="center", fontweight="bold", color=INK)
+ax.text(x0 + cw + g / 2, 0.93, "History improves prediction?", ha="center", va="center", fontweight="bold", color=INK)
 ax.text(x0 + cw / 2, 0.81, "No", ha="center", va="center", color=INK); ax.text(x0 + 1.5 * cw + g, 0.81, "Yes", ha="center", va="center", color=INK)
 ax.text(0.0, yb + ch + g / 2, "State\nuseful?", ha="left", va="center", fontweight="bold", color=INK, linespacing=1.1)
 ax.text(x0 - 0.03, yb + 1.5 * ch + g, "Yes", ha="right", va="center", color=INK)
