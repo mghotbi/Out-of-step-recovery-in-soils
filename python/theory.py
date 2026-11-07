@@ -1,4 +1,4 @@
-"""Closed-form results of the out-of-step recovery theory (Python port of R/theory_4R.R)."""
+"""Closed-form results of the out-of-step recovery theory (Python port of R/theory.R)."""
 import numpy as np
 from scipy.optimize import brentq
 

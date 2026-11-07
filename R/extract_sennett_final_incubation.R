@@ -1,5 +1,5 @@
 # Extract final common anoxic incubation gas kinetics (Sennett et al. 2024, source data Fig. 3a-c) and
-# total PLFA biomass (source data Fig. 4a) for Figure 3d,e. Base R only; reads stored workbook values.
+# total PLFA biomass (source data Fig. 4a) for main Fig. 5g,i–k and Supplementary Fig. 3. Base R only; reads stored workbook values.
 # Run from the R/ folder:  source("extract_sennett_final_incubation.R")
 options(encoding = "UTF-8")
 DATA <- file.path("..", "data"); WB <- file.path(DATA, "primary_source_workbooks")

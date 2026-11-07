@@ -90,7 +90,7 @@ ax2.set_ylabel("Relative to plaque"); ax2.legend(loc="upper right", handlelength
 # ---------------- KINETICS: g Sennett et al. 2024; h Liu et al. 2025 ----------------
 y += ROW; band(y, "Kinetics", "rate", "g, Sennett et al. 2024;  h, Liu et al. 2025")
 ax1, ax2 = row(y, X2, W2)
-M = rd("figure3_derived_metrics.csv")
+M = rd("fig5_derived_metrics.csv")
 rho_c = spearmanr(M.N2_half_time_h, M.N2O_integral_1_24h).statistic; rho_w = spearmanr(M.N2_half_time_h, M.N2O_time_integral).statistic
 for h in HIST:
     q = M[M.history == h]
@@ -100,7 +100,7 @@ logticks(ax1.xaxis, [10, 20, 50, 100]); ax1.set_yticks([40, 60, 80])
 ax1.set_xlabel("Terminal-record N$_2$ half-time (h)"); ax1.set_ylabel("N$_2$O amount × time, 1–24 h (µmol N h)")
 ax1.text(0.97, 0.95, f"ρ = {rho_c:.2f}", transform=ax1.transAxes, ha="right", va="top")
 ax1.legend(loc="upper left", handletextpad=0.1, labelspacing=0.25); letter(ax1, "g")
-co2 = rd("figure3_derived_co2_windows.csv")
+co2 = rd("fig5_derived_co2_windows.csv")
 soils = {"Paddy soil": "#5b3a1a", "Sandy soil": "#c2a36b"}
 for s_, c in soils.items():
     q = co2[co2.soil == s_].set_index("window")
@@ -136,7 +136,7 @@ for j, (lab, col) in enumerate(metrics):
 ax2.set_ylim(0.4, 1.75); ax2.set_yticks([0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6]); ax2.set_xticks(range(3), [m[0] for m in metrics]); ax2.set_xlim(-0.5, 2.5)
 ax2.text(0.5, 1.66, "biomass and\nterminal yield", ha="center", va="center", linespacing=1.0); ax2.text(2.0, 1.66, "accumulation", ha="center", va="center")
 ax2.set_ylabel("Ratio to Ox mean"); ax2.legend(loc="lower left", handletextpad=0.1, labelspacing=0.25); letter(ax2, "j")
-cw = rd("running_integrals_common_window_v16.csv")
+cw = rd("running_integrals_common_window.csv")
 cw["history"] = cw.series.str.split("_").str[0]
 piv = cw.pivot_table(index="end_h", columns="series", values="amount_time_integral")
 mean_h = {h: piv[[c for c in piv.columns if c.startswith(h + "_")]].mean(axis=1) for h in HIST}

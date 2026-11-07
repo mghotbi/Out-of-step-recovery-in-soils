@@ -25,7 +25,7 @@ for i, (n, ttl, sub, (fc, ec)) in enumerate(steps):
     ax.text(x + w / 2, 3.2, sub, ha="center", va="center", color=INK)
     if i < 4: ax.plot(x + w + g / 2, 4.9, marker=">", ms=3.6, color=INK, mec="none")
 ax2 = fig.add_axes([0.3 / FW, (FH - 1.12) / FH, (FW - 0.42) / FW, 0.22 / FH]); ax2.set_axis_off(); ax2.set_xlim(0, 100); ax2.set_ylim(0, 1)
-for x, m, dsc in ((0, "M0", "bulk state + forcing"), (35, "M1", "M0 + measured state"), (70, "M2", "M1 + history")):
+for x, m, dsc in ((0, "M0", "bulk conditions + forcing"), (35, "M1", "M0 + internal state"), (70, "M2", "M1 + history")):
     ax2.text(x, 0.5, m, fontweight="bold", va="center", color=INK); ax2.text(x + 3.6, 0.5, dsc, va="center", color=INK)
 
 # ---------------- b ----------------

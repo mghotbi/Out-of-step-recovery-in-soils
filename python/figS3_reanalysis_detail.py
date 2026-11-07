@@ -1,5 +1,5 @@
-"""Supplementary Figure 2 | Published nitrogen trajectories behind Fig. 5g and 5i–k (panels a–c).
-Run from python/:  python figS2_reanalysis_detail.py -> ../figures/Supplementary_Figure_2_reanalysis.{pdf,png,svg}"""
+"""Supplementary Figure 3 | Published nitrogen trajectories behind Fig. 5g and 5i–k (panels a–c).
+Run from python/:  python figS3_reanalysis_detail.py -> ../figures/Supplementary_Figure_3_reanalysis.{pdf,png,svg}"""
 import os, numpy as np, pandas as pd
 from matplotlib.patches import Rectangle
 from matplotlib.ticker import FixedLocator, FixedFormatter, NullFormatter
@@ -7,7 +7,7 @@ from style import plt, COL, HIST, FS, FS_LETTER, save
 
 HERE = os.path.dirname(os.path.abspath(__file__)); DATA = os.path.join(HERE, "..", "data"); OUT = os.path.join(HERE, "..", "figures")
 gas = pd.read_csv(os.path.join(DATA, "sennett_final_incubation_gas.csv"))
-M = pd.read_csv(os.path.join(DATA, "figure3_derived_metrics.csv"))
+M = pd.read_csv(os.path.join(DATA, "fig5_derived_metrics.csv"))
 co2 = pd.read_csv(os.path.join(DATA, "liu_2025_panel_h_co2_efflux.csv"))
 
 FW, FH = 7.2, 0.52 + 1.45 + 0.6 + 1.45 + 0.55
@@ -59,4 +59,4 @@ ax.yaxis.set_minor_formatter(NullFormatter())
 ax.set_xticks(range(3), [m[1] for m in metrics]); ax.set_xlim(-0.5, 2.5); ax.set_ylabel("Ratio to Ox mean")
 head(ax, "c", "")
 
-save(fig, OUT, "Supplementary_Figure_2_reanalysis")
+save(fig, OUT, "Supplementary_Figure_3_reanalysis")

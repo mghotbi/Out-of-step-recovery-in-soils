@@ -1,6 +1,6 @@
 # Verify every number quoted in the manuscript and Supplementary Note 1.
-# Stops with an error if any check fails.  Run from the R/ folder:  source("verify_4R.R")
-source("theory_4R.R")
+# Stops with an error if any check fails.  Run from the R/ folder:  source("verify_theory.R")
+source("theory.R")
 failed <- character(0); rows <- list()
 check <- function(name, value, expected, tol) {
   ok <- abs(value - expected) <= tol
@@ -50,8 +50,8 @@ ode_escape <- function(L, p0 = 1, l = 0.1, kk = 1, T = 12, dt = 5e-3, tend = 150
 }
 check("P3: escape, on-time sink (umol N)", escape(0), 1.09, 0.005)
 check("P3: escape, 4-h lag (umol N)", escape(4), 1.73, 0.005)
-check("Fig 3d: escape, 6-h lag / dormant sink (umol N)", escape(6), 2.44, 0.005)
-check("Fig 3d: cumulative ratio dormant/active", escape(6) / escape(0), 2.24, 0.005)
+check("Supplementary Fig. 2f: escape, 6-h lag / dormant sink (umol N)", escape(6), 2.44, 0.005)
+check("Supplementary Fig. 2f: cumulative ratio dormant/active", escape(6) / escape(0), 2.24, 0.005)
 check("P3: escape L=4, analytic minus ODE", escape(4) - ode_escape(4), 0, 5e-4)
 check("P3: exact debt, 4-h lag (umol N)", redox_debt(4), 0.639, 0.0005)
 check("P3: short-lag approximation, 4-h lag", redox_debt_small_lag(4), 0.727, 0.0005)
@@ -67,6 +67,6 @@ s <- legacy_pre(400, 0.5, 1)
 check("P4: iterated series converges to B (R=2)", s[400] - carried_legacy(2), 0, 1e-9)
 
 out <- do.call(rbind, rows)
-if (dir.exists(file.path("..", "data"))) write.csv(out, file.path("..", "data", "verification_4R_R.csv"), row.names = FALSE)
+if (dir.exists(file.path("..", "data"))) write.csv(out, file.path("..", "data", "verification_theory_R.csv"), row.names = FALSE)
 if (length(failed)) stop(length(failed), " check(s) failed: ", paste(failed, collapse = "; "))
 cat("\nALL CHECKS PASSED\n")

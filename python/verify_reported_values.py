@@ -22,7 +22,7 @@ diel = rd("li_2025_diel_feII_P_primary_source.csv")
 sw = lambda v, c: np.mean(np.abs(np.diff(diel[diel.compartment == c][v].values)))
 for v, c, q in (("FeII", "Rhizosphere", .40), ("FeII", "Bulk soil", .08), ("P", "Rhizosphere", .52), ("P", "Bulk soil", .14)):
     check(f"{v} swing {c}/plaque", sw(v, c) / sw(v, "Iron plaque"), q, .005)
-M = rd("figure3_derived_metrics.csv")
+M = rd("fig5_derived_metrics.csv")
 check("half-time min", M.N2_half_time_h.min(), 14, .5); check("half-time max", M.N2_half_time_h.max(), 78, .5)
 check("Spearman rho complete record", spearmanr(M.N2_half_time_h, M.N2O_time_integral).statistic, .98, .005)
 r124 = spearmanr(M.N2_half_time_h, M.N2O_integral_1_24h); check("Spearman rho 1-24 h", r124.statistic, .37, .005); check("P 1-24 h", r124.pvalue, .33, .005)
@@ -32,9 +32,9 @@ for col, h, q, t in (("N2_final", "SA", .91, .005), ("N2_final", "LA", .86, .005
     check(f"{col} {h}/Ox", mean[col][h] / mean[col]["Ox"], q, t)
 pl = rd("sennett_plfa_total.csv").groupby("treatment").total_plfa_pmol_g.mean()
 check("PLFA SA/Ox", pl["SA"] / pl["Ox"], .93, .005); check("PLFA LA/Ox", pl["LA"] / pl["Ox"], .94, .005)
-w = rd("window_comparisons_v16.csv").set_index(["end_h", "history"]).ratio_to_Ox
+w = rd("window_comparisons.csv").set_index(["end_h", "history"]).ratio_to_Ox
 check("SA/Ox 1–12 h", w[(12, "SA")], .48, .005); check("SA/Ox 1–24 h", w[(24, "SA")], 1.19, .005)
-co2 = rd("figure3_derived_co2_windows.csv").set_index(["soil", "window"]).sterilized_pct
+co2 = rd("fig5_derived_co2_windows.csv").set_index(["soil", "window"]).sterilized_pct
 for k, q in ((("Paddy soil", "0.5-6 h"), 43), (("Paddy soil", "0.5-48 h"), 20), (("Sandy soil", "0.5-6 h"), 91), (("Sandy soil", "0.5-48 h"), 49)): check(f"Liu sterilized {k}", co2[k], q, .5)
 check("tau*", th.crossover_time(20, 1, 60, .02), 20.3, .05)
 for L, q in ((0, 1.09), (4, 1.73), (6, 2.44)): check(f"E({L})", float(th.escape(L)), q, .005)

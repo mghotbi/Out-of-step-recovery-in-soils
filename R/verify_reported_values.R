@@ -1,7 +1,7 @@
 # Independent base-R check of every number quoted in the manuscript text and figure legends.
 # Mirrors python/verify_reported_values.py. Run from R/:  Rscript verify_reported_values.R
 # Writes ../data/verification_reported_values_R.csv and stops with an error if any check fails.
-source("theory_4R.R")
+source("theory.R")
 D <- file.path("..", "data"); rd <- function(f) read.csv(file.path(D, f), check.names = FALSE)
 rows <- list()
 check <- function(name, value, quoted, tol) {
@@ -30,7 +30,7 @@ sh <- function(st, hz) 100 * fe$value[fe$stage == st & fe$horizon == hz] / sum(f
 check("palsa mineral horizon %", sh("Palsa", "Mineral horizon"), 91, .5)
 check("bog transition zone %", sh("Bog", "Transition zone"), 66, .5)
 # Sennett et al. 2024: half-times, correlations, ratios
-M <- rd("figure3_derived_metrics.csv")
+M <- rd("fig5_derived_metrics.csv")
 check("N2 half-time min (h)", min(M$N2_half_time_h), 14, .5); check("N2 half-time max (h)", max(M$N2_half_time_h), 78, .5)
 rho_full <- cor(M$N2_half_time_h, M$N2O_time_integral, method = "spearman")
 rho_124 <- cor(M$N2_half_time_h, M$N2O_integral_1_24h, method = "spearman")
@@ -45,14 +45,14 @@ check("N2O 1-24 h SA/Ox", mh["SA", "N2O_integral_1_24h"] / mh["Ox", "N2O_integra
 check("N2O 1-24 h LA/Ox", mh["LA", "N2O_integral_1_24h"] / mh["Ox", "N2O_integral_1_24h"], 1.24, .005)
 pl <- tapply(rd("sennett_plfa_total.csv")$total_plfa_pmol_g, rd("sennett_plfa_total.csv")$treatment, mean)
 check("PLFA SA/Ox", pl[["SA"]] / pl[["Ox"]], .93, .005); check("PLFA LA/Ox", pl[["LA"]] / pl[["Ox"]], .94, .005)
-w <- rd("window_comparisons_v16.csv")
+w <- rd("window_comparisons.csv")
 check("SA/Ox, 1-12 h", w$ratio_to_Ox[w$end_h == 12 & w$history == "SA"], .48, .005)
 check("SA/Ox, 1-24 h", w$ratio_to_Ox[w$end_h == 24 & w$history == "SA"], 1.19, .005)
 # Liu et al. 2025: sterilized CO2 as % of untreated
-co2 <- rd("figure3_derived_co2_windows.csv")
+co2 <- rd("fig5_derived_co2_windows.csv")
 for (a in list(c("Paddy soil", "0.5-6 h", 43), c("Paddy soil", "0.5-48 h", 20), c("Sandy soil", "0.5-6 h", 91), c("Sandy soil", "0.5-48 h", 49)))
   check(paste("sterilized %", a[1], a[2]), co2$sterilized_pct[co2$soil == a[1] & co2$window == a[2]], as.numeric(a[3]), .5)
-# Analytical results, equations (1)-(3)
+# Analytical results, equations (1)-(3) (main Box 1)
 check("crossing time tau* (h)", crossover_time(20, 1, 60, 0.02), 20.3, .05)
 for (a in list(c(0, 1.09), c(4, 1.73), c(6, 2.44))) check(paste0("escape E(", a[1], " h) (umol N)"), escape(a[1]), a[2], .005)
 check("carry-over B at R = 1", carried_legacy(1), .58, .005)

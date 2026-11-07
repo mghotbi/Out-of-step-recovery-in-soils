@@ -1,5 +1,5 @@
-"""Supplementary Figure 1 | Restricted-model consequences P1-P4 (P5 is evaluated by the experiment in main Fig. 6). All curves analytic (theory.py).
-Run from python/:  python figS1_predictions.py -> ../figures/Supplementary_Figure_1_predictions.{pdf,png,svg}"""
+"""Supplementary Figure 2 | Restricted-model consequences P1-P4 (P5 is evaluated by the experiment in main Fig. 6). All curves analytic (theory.py).
+Run from python/:  python figS2_predictions.py -> ../figures/Supplementary_Figure_2_predictions.{pdf,png,svg}"""
 import os, numpy as np
 from matplotlib.patches import Rectangle
 from matplotlib.colors import LinearSegmentedColormap, LogNorm
@@ -103,4 +103,4 @@ ax.set_xscale("log"); ax.set_yscale("log"); ax.set_ylim(0.01, 40)
 ax.set_xlabel("Persistence ratio $R$ = T$_m$/Δ"); ax.set_ylabel("Legacy B (increments)")
 ax.legend(loc="lower right"); letter(ax, "h")
 
-save(fig, OUT, "Supplementary_Figure_1_predictions")
+save(fig, OUT, "Supplementary_Figure_2_predictions")

@@ -1,5 +1,5 @@
 # Finite-window weak-escape sensitivity: E_W(l)=l*A_W(0)+O(l^2), prescribed source/sink.
-source('theory_4R.R')
+source('theory.R')
 rows<-list();n<-0L
 piece_integral<-function(fun,W,L,T=12) {
  cuts<-sort(unique(c(0,min(L,W),min(T,W),W)));sum(vapply(seq_len(length(cuts)-1),function(i)

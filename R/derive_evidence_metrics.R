@@ -29,9 +29,9 @@ W<-do.call(rbind,lapply(c('Paddy soil','Sandy soil'),function(soil) do.call(rbin
    sterilized_integral=s,tba_integral=t,sterilized_pct=100*s/u,tba_pct=100*t/u)
 }))))
 agg<-aggregate(cbind(N2O_time_integral,N2O_integral_1_24h,N2_final,N2_half_time_h)~history,M,mean)
-write.csv(M,file.path(DATA,'figure3_derived_metrics.csv'),row.names=FALSE)
-write.csv(W,file.path(DATA,'figure3_derived_co2_windows.csv'),row.names=FALSE)
-write.csv(agg,file.path(DATA,'figure3_history_summary.csv'),row.names=FALSE)
+write.csv(M,file.path(DATA,'fig5_derived_metrics.csv'),row.names=FALSE)
+write.csv(W,file.path(DATA,'fig5_derived_co2_windows.csv'),row.names=FALSE)
+write.csv(agg,file.path(DATA,'fig5_history_summary.csv'),row.names=FALSE)
 P<-data.frame(history=c('Ox','SA','LA'),published_Table1_integrated_N2O=c(49.9,592,134))
 P<-merge(P,agg[,c('history','N2O_time_integral')],by='history',sort=FALSE)
 P$note<-'Own trapezoidal integral over each supplied recorded trajectory; published integration bounds/method not fully reconciled, particularly LA. Not an exact reproduction of Table 1.'
