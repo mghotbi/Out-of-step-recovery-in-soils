@@ -8,7 +8,7 @@
 [![Data licenses](https://img.shields.io/badge/Data-Source%20licenses-lightgrey?style=flat-square)](#source-data-and-reuse)
 
 
-Code and data for the Perspective "Hidden redox legacies in apparently recovered soils" by M. Ghotbi, B. C. Kolody, M. Ghotbi, M. F. Breed, J. A. Gilbert and E. Holtgrewe-Stukenbrock (submitted to *Nature Communications*).
+Code and data for the Perspective "Hidden redox legacies in apparently recovered soils" by M. Ghotbi, B. C. Kolody, M. Ghotbi, M. F. Breed, J. A. Gilbert and E. Holtgrewe-Stukenbrock  
 
 The Perspective introduces out-of-step recovery: bulk conditions (moisture, temperature, pH, O₂, Eₕ) can return while the internal state that sustains a function, its capacity (electron reserve), connectivity (access to it) and kinetics (reaction rates), recovers on different timescales from bulk conditions or among its components. Three limiting calculations (equations (1)–(3), main Box 1) show the consequences, and a predictive test (Fig. 6) asks whether measuring that state improves prediction. This repository contains only what is needed to reproduce the figures and quoted numbers; it is not a general modelling package.
 
