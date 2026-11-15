@@ -19,11 +19,12 @@ The repository reproduces every quantitative figure and every number quoted in t
 | Output | Script | Inputs |
 |---|---|---|
 | Fig. 1 (schematic recovery trajectories and framework) | `python/fig1_concept.py` | analytical |
-| Fig. 5 (published observations, panels a–k) | `python/fig5_evidence.py` | `data/*.csv` |
+| Fig. 5 (reanalysed published data, panels a–k) | `python/fig5_evidence.py` | `data/*.csv` |
 | Fig. 6 (proposed test of predictive sufficiency) | `python/fig6_test.py` | schematic |
 | Supplementary Fig. 1 (illustrative example: a, relabelled author artwork; b, second-challenge N₂O escape) | `python/figS1a_relabel_artwork.py`, `python/figS1_worked_example.py b`, `python/figS1_compose.py` | `artwork/`; analytical (`python/theory.py`) |
 | Supplementary Fig. 2 (restricted-model consequences P1–P4) | `python/figS2_predictions.py` | analytical (`python/theory.py`) |
-| Supplementary Fig. 3 (nitrogen trajectories) | `python/figS3_reanalysis_detail.py` | `data/fig5_*.csv` |
+| Supplementary Fig. 3 (capacity vs Fe inventory, Yu et al. 2026) | `python/figS3_capacity_inventory.py` | `data/yu_2026_fe_fractions_eac.csv` |
+| Supplementary Fig. 4 (nitrogen trajectories) | `python/figS4_reanalysis_detail.py` | `data/fig5_*.csv` |
 | LA integral audit (Supplementary Note 2) | `python/la_integral_audit.py` | `data/sennett_final_incubation_gas.csv` |
 | All reported values | `python/verify_reported_values.py`, `R/verify_reported_values.R` | `data/*.csv` |
 
@@ -49,7 +50,8 @@ Python (3.10 or later):
     python figS1_worked_example.py b
     python figS1_compose.py
     python figS2_predictions.py
-    python figS3_reanalysis_detail.py
+    python figS3_capacity_inventory.py
+    python figS4_reanalysis_detail.py
     python verify_reported_values.py      # must print ALL PASS
 
 R (base R only; an independent check of the same values):
@@ -67,8 +69,8 @@ Figures are written to `figures/` as PDF, PNG (600 dpi) and SVG, in Arial (or th
 - `run_all.sh`: regenerates all figures and runs all checks.
 - `python/theory.py`, `R/theory.R`: closed-form results for equations (1)–(3) in main Box 1: fixed-pool exchange, the crossing time of two pools, cumulative escape with a delayed sink, and carry-over between events.
 - `python/style.py`: shared figure style.
-- `R/extract_sennett_final_incubation.R`, `R/derive_evidence_metrics.R`, `R/verify_primary_tables.R`: extraction of the published source-data workbooks and derivation of the integrals, half-times and ratios used in Fig. 5 and Supplementary Fig. 3.
-- `data/primary_source_workbooks/`: the published source-data extracts used (Li et al. 2025; Liu et al. 2025; Patzner et al. 2020; Sennett et al. 2024).
+- `R/extract_sennett_final_incubation.R`, `R/derive_evidence_metrics.R`, `R/verify_primary_tables.R`: extraction of the published source-data workbooks and derivation of the integrals, half-times and ratios used in Fig. 5 and Supplementary Fig. 4.
+- `data/primary_source_workbooks/`: the published source-data extracts used (Li et al. 2025; Liu et al. 2025; Patzner et al. 2020; Sennett et al. 2024; Yu et al. 2026, source-data workbooks MOESM4 and MOESM5). `data/yu_2026_microbial_reduction_eec.csv` gives, per sediment, EAC lost and EDC gained after 5 days of microbial reduction (initial minus end values from MOESM5, Figure S9; s.d. propagated from duplicates) and the Mössbauer clay-Fe(II) percentages (MOESM4, Figure 5) used to group sediments by Fe(III) reduction (increase > 5 percentage points). Panel d replaces the earlier Patzner et al. reactive-Fe panel; that CSV is retained for provenance.
 - `data/*.csv`: extracted tables and derived values. Column definitions and integration windows are described in Supplementary Note 2 and Supplementary Table 1.
 
 ## Source data and reuse
@@ -77,6 +79,7 @@ No new measurements are reported. The source workbooks are third-party data from
 
 - Li, C. et al. Rhythmic radial oxygen loss enhances soil phosphorus bioavailability. *Nat. Commun.* 16, 4413 (2025). https://doi.org/10.1038/s41467-025-59637-x
 - Liu, F. et al. Abiotic processes dominate short-term carbon emissions in sandy soils following rewetting. *Commun. Earth Environ.* 6, 733 (2025). https://doi.org/10.1038/s43247-025-02733-z
+- Yu, C. et al. Deciphering the origin of electron exchange capacities in floodplain sediments. *Commun. Earth Environ.* 7, 290 (2026). https://doi.org/10.1038/s43247-026-03307-3
 - Patzner, M. S. et al. Iron mineral dissolution releases iron and associated organic carbon during permafrost thaw. *Nat. Commun.* 11, 6329 (2020). https://doi.org/10.1038/s41467-020-20102-6
 - Sennett, L. B. et al. Determining how oxygen legacy affects trajectories of soil denitrifier community dynamics and N₂O emissions. *Nat. Commun.* 15, 7298 (2024). https://doi.org/10.1038/s41467-024-51688-w
 

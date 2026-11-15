@@ -1,6 +1,6 @@
-# Verify Supplementary Figure 3 source data in two stages; stops with an error on any failure. Base R only.
-# Stage 1  primary workbook -> extracted tables (Supplementary Figure 3a-f; stored cell values, no recalculation)
-# Stage 2  extracted tables -> ../data/source_data_supplementary_figure3.csv (panel-level source data)
+# Verify Supplementary Figure 4 source data in two stages; stops with an error on any failure. Base R only.
+# Stage 1  primary workbook -> extracted tables (Supplementary Figure 4a-f; stored cell values, no recalculation)
+# Stage 2  extracted tables -> ../data/source_data_supplementary_figure4.csv (panel-level source data)
 # The small OOXML reader below handles the cells used here; it is not a general Excel parser.
 # Run from the R/ folder:  source("verify_primary_tables.R")
 options(encoding = "UTF-8")
@@ -73,8 +73,8 @@ record(1, "e Sennett total PLFA", pl$total_plfa_pmol_g, num(s, paste0("B", rn)))
 record(1, "e Sennett PLFA treatment labels", as.numeric(identical(pl$treatment, unname(s[paste0("A", rn)]))), 1)
 
 # ---------------- Stage 2 ----------------
-# Independent recomputation of descriptive Supplementary Figure 3 quantities from the extracted tables.
-S <- read.csv(file.path(DATA, "source_data_supplementary_figure3.csv"), stringsAsFactors = FALSE, encoding = "UTF-8")
+# Independent recomputation of descriptive Supplementary Figure 4 quantities from the extracted tables.
+S <- read.csv(file.path(DATA, "source_data_supplementary_figure4.csv"), stringsAsFactors = FALSE, encoding = "UTF-8")
 P <- function(k, f = NULL) { g <- S[S$panel == k, ]; if (!is.null(f)) g <- g[g$facet == f, ]; g }
 tz <- function(x, y) sum(diff(x) * (y[-1] + y[-length(y)]) / 2)
 key <- paste(gs$history, gs$replicate); bb <- P("b")

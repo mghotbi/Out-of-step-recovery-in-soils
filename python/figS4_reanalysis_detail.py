@@ -1,5 +1,5 @@
-"""Supplementary Figure 3 | Published nitrogen trajectories behind Fig. 5g and 5i–k (panels a–c).
-Run from python/:  python figS3_reanalysis_detail.py -> ../figures/Supplementary_Figure_3_reanalysis.{pdf,png,svg}"""
+"""Supplementary Figure 4 | Published nitrogen trajectories behind Fig. 5g and 5i–k (panels a–c).
+Run from python/:  python figS4_reanalysis_detail.py -> ../figures/Supplementary_Figure_4_reanalysis.{pdf,png,svg}"""
 import os, numpy as np, pandas as pd
 from matplotlib.patches import Rectangle
 from matplotlib.ticker import FixedLocator, FixedFormatter, NullFormatter
@@ -59,4 +59,4 @@ ax.yaxis.set_minor_formatter(NullFormatter())
 ax.set_xticks(range(3), [m[1] for m in metrics]); ax.set_xlim(-0.5, 2.5); ax.set_ylabel("Ratio to Ox mean")
 head(ax, "c", "")
 
-save(fig, OUT, "Supplementary_Figure_3_reanalysis")
+save(fig, OUT, "Supplementary_Figure_4_reanalysis")

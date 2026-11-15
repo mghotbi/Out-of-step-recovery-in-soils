@@ -1,6 +1,7 @@
-"""Figure 5 | Published observations organized by the four framework components.
+"""Figure 5 | Published data show that redox pools and responses change, but not why.
+Bands give the framework component and the prediction each reanalysis addresses (P1, P3, P4).
 Every panel shows source data from ONE study; no panel combines studies. Studies: Li et al. 2025 (a-c, e-f),
-Patzner et al. 2020 (d), Sennett et al. 2024 (g, i-k), Liu et al. 2025 (h).
+Yu et al. 2026 (d; source data workbooks MOESM4/MOESM5), Sennett et al. 2024 (g, i-k), Liu et al. 2025 (h).
 Run from python/:  python fig5_evidence.py -> ../figures/Figure_5_evidence.{pdf,png,svg}"""
 import os, numpy as np, pandas as pd
 from matplotlib.patches import Rectangle
@@ -18,7 +19,7 @@ fig = plt.figure(figsize=(FW, FH))
 def band(y_top, comp, mnem, src):
     a = fig.add_axes([0.08 / FW, (FH - y_top - BAND) / FH, (FW - 0.14) / FW, BAND / FH]); a.set_axis_off()
     a.add_patch(Rectangle((0, 0), 1, 1, color=COL[comp], transform=a.transAxes))
-    a.text(0.008, 0.5, comp.upper(), color="white", fontweight="bold", va="center")
+    a.text(0.008, 0.5, comp.upper() + "  ·  " + mnem, color="white", fontweight="bold", va="center")
 def row(y_top, xs, w):
     return [fig.add_axes([x / FW, (FH - y_top - BAND - GAP - AXH) / FH, w / FW, AXH / FH]) for x in xs]
 def letter(ax, L, dx=0.45):
@@ -28,7 +29,7 @@ X2, W2 = (0.62, 4.15), 2.75
 X3, W3 = (0.55, 2.95, 5.35), 1.62
 
 # ---------------- CAPACITY: a–c Li et al. 2025; d Patzner et al. 2020 ----------------
-y = 0.05; band(y, "Capacity", "reserve", "a–c, Li et al. 2025;  d, Patzner et al. 2020")
+y = 0.05; band(y, "Capacity", "P1", "a–c, Li et al. 2025;  d, Yu et al. 2026")
 ax1, ax2, ax3, ax4 = row(y, X4, W4)
 eec = rd("li_2025_eec_primary_source.csv").set_index("compartment")
 frac = rd("li_2025_fe_fractions_primary_source.csv"); pcf = frac[frac.fraction_index == 2].set_index("compartment").percent_of_total_Fe
@@ -47,21 +48,24 @@ ax3.bar([0, 1], [1.0, post / base], 0.6, color=["0.72", COL["Capacity"]], edgeco
 ax3.text(1, post / base + 0.04, f"×{post / base:.2f}", ha="center", va="bottom")
 ax3.set_xticks([0, 1], ["Goethite", "After 30 d\ncycling"]); ax3.set_ylim(0, 2.0); ax3.set_yticks([0, 0.5, 1, 1.5, 2]); ax3.set_xlim(-0.6, 1.6)
 ax3.set_ylabel("EEC relative to goethite"); letter(ax3, "c")
-fe = rd("patzner_panel_p_mineral_fe_oc_measured.csv"); fe = fe[fe.metric == "Reactive Fe"]
-hz = ["Organic horizon", "Transition zone", "Mineral horizon"]; st = ["Palsa", "Bog", "Fen"]; shades = ["#EAD7B7", "#C99A55", "#7A4E1D"]
-bottom = np.zeros(3)
-for j, h in enumerate(hz):
-    vals = np.array([100 * fe[(fe.stage == s) & (fe.horizon == h)].value.iloc[0] / fe[fe.stage == s].value.sum() for s in st])
-    ax4.bar(range(3), vals, 0.62, bottom=bottom, color=shades[j], edgecolor="white", lw=0.5, label=h.split()[0]); bottom += vals
-ax4.set_xticks(range(3), st); ax4.set_ylim(0, 100); ax4.set_yticks([0, 25, 50, 75, 100]); ax4.set_xlim(-0.55, 3.75); ax4.set_ylabel("Share of reactive Fe (%)")
-fen = [100 * fe[(fe.stage == "Fen") & (fe.horizon == h)].value.iloc[0] / fe[fe.stage == "Fen"].value.sum() for h in hz]
-ax4.text(2.4, fen[0] + fen[1] + fen[2] / 2, "Mineral", va="center"); ax4.text(2.4, fen[0] + fen[1] / 2, "Transition", va="center")
-ax4.annotate("Organic", xy=(2.31, fen[0] / 2), xytext=(2.4, 6), va="center", arrowprops=dict(arrowstyle="-", lw=0.5, color="0.4"))
-ax4.spines["bottom"].set_bounds(-0.55, 2.55)
+yu = rd("yu_2026_microbial_reduction_eec.csv").set_index("sediment")
+order = ["F2-0.6 m", "W2-0.8 m", "R4-1.0 m", "R2-0.8 m", "F1-1.0 m"]; xs = np.array([0, 1, 2, 3.45, 4.45]); bw = 0.38
+yq = yu.loc[order]
+ax4.bar(xs - bw / 2, yq.EAC_lost, bw, color=COL["Capacity"], edgecolor=COL["Capacity"], lw=0.6, label="EAC lost")
+ax4.bar(xs + bw / 2, yq.EDC_gained, bw, color="white", edgecolor=COL["Capacity"], lw=0.8, hatch="//////", label="EDC gained")
+ax4.errorbar(xs - bw / 2, yq.EAC_lost, yq.EAC_lost_sd, fmt="none", ecolor="k", elinewidth=0.5, capsize=1.2)
+ax4.errorbar(xs + bw / 2, yq.EDC_gained, yq.EDC_gained_sd, fmt="none", ecolor="k", elinewidth=0.5, capsize=1.2)
+ax4.axhline(0, color="0.3", lw=0.5)
+ax4.set_xticks(xs, [o.split("-")[0] for o in order]); ax4.set_xlim(-0.5, 4.95); ax4.set_ylim(-0.03, 0.2); ax4.set_yticks([0, 0.05, 0.1, 0.15, 0.2])
+ax4.set_ylabel("Change after 5 d (mmol e$^{-}$ g$^{-1}$)")
+for x0, x1, lab in ((-0.3, 2.3, "Fe(III) reduced"), (3.15, 4.75, "Not reduced")):
+    ax4.annotate("", xy=(x0, -0.17), xytext=(x1, -0.17), xycoords=("data", "axes fraction"), textcoords=("data", "axes fraction"), arrowprops=dict(arrowstyle="-", lw=0.6, color="0.35"), annotation_clip=False)
+    ax4.text((x0 + x1) / 2, -0.19, lab, transform=ax4.get_xaxis_transform(), ha="center", va="top")
+ax4.legend(loc="upper right", bbox_to_anchor=(1.04, 1.02), handlelength=1.2, labelspacing=0.25)
 letter(ax4, "d")
 
 # ---------------- CONNECTIVITY: e, f Li et al. 2025 ----------------
-y += ROW; band(y, "Connectivity", "reach", "Li et al. 2025")
+y += ROW; band(y, "Connectivity", "P1", "Li et al. 2025")
 ax1, ax2 = row(y, X2, W2)
 diel = rd("li_2025_diel_feII_P_primary_source.csv")
 cc = {"Iron plaque": COL["Connectivity"], "Rhizosphere": "#7FBFC3", "Bulk soil": "0.55"}
@@ -88,7 +92,7 @@ ax2.set_xticks(dist, dlab); ax2.set_xlim(-0.3, 2.45); ax2.set_ylim(0, 1.15); ax2
 ax2.set_ylabel("Relative to plaque"); ax2.legend(loc="upper right", handlelength=1.8, labelspacing=0.3); letter(ax2, "f")
 
 # ---------------- KINETICS: g Sennett et al. 2024; h Liu et al. 2025 ----------------
-y += ROW; band(y, "Kinetics", "rate", "g, Sennett et al. 2024;  h, Liu et al. 2025")
+y += ROW; band(y, "Kinetics", "P3", "g, Sennett et al. 2024;  h, Liu et al. 2025")
 ax1, ax2 = row(y, X2, W2)
 M = rd("fig5_derived_metrics.csv")
 rho_c = spearmanr(M.N2_half_time_h, M.N2O_integral_1_24h).statistic; rho_w = spearmanr(M.N2_half_time_h, M.N2O_time_integral).statistic
@@ -115,7 +119,7 @@ ax2.legend(hd, ["γ-sterilized", "TBA-treated", "Paddy soil", "Sandy soil"], loc
 letter(ax2, "h")
 
 # ---------------- MEMORY: i–k Sennett et al. 2024 ----------------
-y += ROW; band(y, "Memory", "recall", "Sennett et al. 2024")
+y += ROW; band(y, "Memory", "P4", "Sennett et al. 2024")
 ax1, ax2, ax3 = row(y, X3, W3)
 gas = rd("sennett_final_incubation_gas.csv"); plfa = rd("sennett_plfa_total.csv")
 for (h, r), q in gas.groupby(["history", "replicate"]):

@@ -3,7 +3,7 @@
 # Usage (from the repository root):  bash run_all.sh
 set -euo pipefail
 cd "$(dirname "$0")/python"
-for s in fig1_concept.py fig5_evidence.py fig6_test.py figS1a_relabel_artwork.py figS2_predictions.py figS3_reanalysis_detail.py; do
+for s in fig1_concept.py fig5_evidence.py fig6_test.py figS1a_relabel_artwork.py figS2_predictions.py figS3_capacity_inventory.py figS4_reanalysis_detail.py; do
   echo "== $s"; python "$s"
 done
 python figS1_worked_example.py b
