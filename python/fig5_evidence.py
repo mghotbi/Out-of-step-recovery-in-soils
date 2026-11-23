@@ -16,10 +16,10 @@ CMP = ["Iron plaque", "Rhizosphere", "Bulk soil"]; CLAB = ["Plaque", "Rhizo-\nsp
 FW = 7.2; BAND, GAP, AXH, XLAB = 0.17, 0.26, 1.25, 0.50
 ROW = BAND + GAP + AXH + XLAB; FH = 4 * ROW + 0.05
 fig = plt.figure(figsize=(FW, FH))
-def band(y_top, comp, mnem, src):
+def band(y_top, comp, mnem, src, lab=None):
     a = fig.add_axes([0.08 / FW, (FH - y_top - BAND) / FH, (FW - 0.14) / FW, BAND / FH]); a.set_axis_off()
     a.add_patch(Rectangle((0, 0), 1, 1, color=COL[comp], transform=a.transAxes))
-    a.text(0.008, 0.5, comp.upper() + "  ·  " + mnem, color="white", fontweight="bold", va="center")
+    a.text(0.008, 0.5, (lab or comp).upper() + "  ·  " + mnem, color="white", fontweight="bold", va="center")
 def row(y_top, xs, w):
     return [fig.add_axes([x / FW, (FH - y_top - BAND - GAP - AXH) / FH, w / FW, AXH / FH]) for x in xs]
 def letter(ax, L, dx=0.45):
@@ -58,7 +58,7 @@ ax4.errorbar(xs + bw / 2, yq.EDC_gained, yq.EDC_gained_sd, fmt="none", ecolor="k
 ax4.axhline(0, color="0.3", lw=0.5)
 ax4.set_xticks(xs, [o.split("-")[0] for o in order]); ax4.set_xlim(-0.5, 4.95); ax4.set_ylim(-0.03, 0.2); ax4.set_yticks([0, 0.05, 0.1, 0.15, 0.2])
 ax4.set_ylabel("Change after 5 d (mmol e$^{-}$ g$^{-1}$)")
-for x0, x1, lab in ((-0.3, 2.3, "Fe(III) reduced"), (3.15, 4.75, "Not reduced")):
+for x0, x1, lab in ((-0.3, 2.3, "Clay-Fe(II) rose"), (3.15, 4.75, "No rise")):
     ax4.annotate("", xy=(x0, -0.17), xytext=(x1, -0.17), xycoords=("data", "axes fraction"), textcoords=("data", "axes fraction"), arrowprops=dict(arrowstyle="-", lw=0.6, color="0.35"), annotation_clip=False)
     ax4.text((x0 + x1) / 2, -0.19, lab, transform=ax4.get_xaxis_transform(), ha="center", va="top")
 ax4.legend(loc="upper right", bbox_to_anchor=(1.04, 1.02), handlelength=1.2, labelspacing=0.25)
@@ -91,69 +91,68 @@ ax2.text(2.09, capr[2] + 0.03, f"{capr[2]:.2f}", color=COL["Capacity"], va="bott
 ax2.set_xticks(dist, dlab); ax2.set_xlim(-0.3, 2.45); ax2.set_ylim(0, 1.15); ax2.set_yticks([0, 0.25, 0.5, 0.75, 1])
 ax2.set_ylabel("Relative to plaque"); ax2.legend(loc="upper right", handlelength=1.8, labelspacing=0.3); letter(ax2, "f")
 
-# ---------------- KINETICS: g Sennett et al. 2024; h Liu et al. 2025 ----------------
-y += ROW; band(y, "Kinetics", "P3", "g, Sennett et al. 2024;  h, Liu et al. 2025")
-ax1, ax2 = row(y, X2, W2)
+# ---------------- TIMING (P3): g, h Sennett et al. 2024; i Liu et al. 2025 ----------------
+y += ROW; band(y, "Kinetics", "P3", "g,h, Sennett et al. 2024;  i, Liu et al. 2025")
+axg, axh, axi = row(y, X3, W3)
 M = rd("fig5_derived_metrics.csv")
 rho_c = spearmanr(M.N2_half_time_h, M.N2O_integral_1_24h).statistic; rho_w = spearmanr(M.N2_half_time_h, M.N2O_time_integral).statistic
 for h in HIST:
     q = M[M.history == h]
-    ax1.scatter(q.N2_half_time_h, q.N2O_integral_1_24h, s=20, color=HIST[h], edgecolor="white", lw=0.4, zorder=4, label=h)
-ax1.set_xscale("log"); ax1.set_xlim(10, 110); ax1.set_ylim(35, 95)
-logticks(ax1.xaxis, [10, 20, 50, 100]); ax1.set_yticks([40, 60, 80])
-ax1.set_xlabel("Terminal-record N$_2$ half-time (h)"); ax1.set_ylabel("N$_2$O amount × time, 1–24 h (µmol N h)")
-ax1.text(0.97, 0.95, f"ρ = {rho_c:.2f}", transform=ax1.transAxes, ha="right", va="top")
-ax1.legend(loc="upper left", handletextpad=0.1, labelspacing=0.25); letter(ax1, "g")
+    axg.scatter(q.N2_half_time_h, q.N2O_integral_1_24h, s=20, color=HIST[h], edgecolor="white", lw=0.4, zorder=4, label=h)
+axg.set_xscale("log"); axg.set_xlim(10, 110); axg.set_ylim(35, 110)
+logticks(axg.xaxis, [10, 20, 50, 100]); axg.set_yticks([40, 60, 80])
+axg.set_xlabel("Terminal-record N$_2$ half-time (h)"); axg.set_ylabel("N$_2$O amount × time, 1–24 h\n(µmol N h vial$^{-1}$)")
+axg.text(0.97, 0.97, f"1–24 h: ρ = {rho_c:.2f}\ncomplete: ρ = {rho_w:.2f}", transform=axg.transAxes, ha="right", va="top", linespacing=1.2)
+axg.legend(loc="upper left", handletextpad=0.1, labelspacing=0.25); letter(axg, "g")
+cw = rd("running_integrals_common_window.csv")
+cw["history"] = cw.series.str.split("_").str[0]
+piv = cw.pivot_table(index="end_h", columns="series", values="amount_time_integral")
+mean_h = {h: piv[[c for c in piv.columns if c.startswith(h + "_")]].mean(axis=1) for h in HIST}
+axh.axhline(1, color="0.6", lw=0.6, ls="--")
+for c in piv.columns:
+    h = c.split("_")[0]
+    if h != "Ox": axh.plot(piv.index, piv[c] / mean_h["Ox"], color=HIST[h], lw=0.5, alpha=0.45)
+for h in ("SA", "LA"): axh.plot(piv.index, mean_h[h] / mean_h["Ox"], color=HIST[h], lw=1.6, label=f"{h}/Ox")
+for W in (12, 24):
+    r = float(np.interp(W, piv.index, mean_h["SA"] / mean_h["Ox"])); axh.plot([W], [r], "o", ms=3.5, color="k", zorder=4)
+    axh.text(W + (0 if W == 12 else -0.8), r * (0.72 if W == 12 else 1.05), f"{r:.2f}", ha="center" if W == 12 else "right", va="bottom" if W == 24 else "center", fontweight="bold")
+axh.set_yscale("log"); axh.set_ylim(0.2, 3); logticks(axh.yaxis, [0.2, 0.5, 1, 2]); axh.set_xlim(0, 25); axh.set_xticks([0, 6, 12, 18, 24])
+axh.set_xlabel("Window end W (h), from 1 h"); axh.set_ylabel("Ratio to Ox (per-vial\nN$_2$O amount × time)")
+axh.legend(loc="upper left", handlelength=1.2, labelspacing=0.25); letter(axh, "h")
 co2 = rd("fig5_derived_co2_windows.csv")
 soils = {"Paddy soil": "#5b3a1a", "Sandy soil": "#c2a36b"}
 for s_, c in soils.items():
     q = co2[co2.soil == s_].set_index("window")
     ster = q.loc[["0.5-6 h", "0.5-48 h"], "sterilized_pct"].values; tba = q.loc[["0.5-6 h", "0.5-48 h"], "tba_pct"].values
-    ax2.plot([0, 1], ster, "-o", color=c, ms=3.5, lw=1.3); ax2.plot([0, 1], tba, "--s", color=c, ms=3.2, lw=1.0, mfc="white")
-    for yv in ster: pass
-ax2.set_xlim(-0.35, 1.35); ax2.set_ylim(0, 125); ax2.set_yticks([0, 25, 50, 75, 100]); ax2.set_xticks([0, 1], ["0.5–6 h", "0.5–48 h"])
-ax2.set_xlabel("Integration window after rewetting"); ax2.set_ylabel("Treated / untreated CO$_2$ (%)")
+    axi.plot([0, 1], ster, "-o", color=c, ms=3.5, lw=1.3); axi.plot([0, 1], tba, "--s", color=c, ms=3.2, lw=1.0, mfc="white")
+axi.set_xlim(-0.35, 1.35); axi.set_ylim(0, 140); axi.set_yticks([0, 25, 50, 75, 100]); axi.set_xticks([0, 1], ["0.5–6 h", "0.5–48 h"])
+axi.set_xlabel("Integration window after rewetting"); axi.set_ylabel("Treated / untreated CO$_2$ (%)")
 hd = [Line2D([], [], color="0.3", marker="o", ms=3.5, lw=1.3), Line2D([], [], color="0.3", ls="--", marker="s", ms=3.2, mfc="white", lw=1.0),
       Line2D([], [], color=soils["Paddy soil"], lw=2.5), Line2D([], [], color=soils["Sandy soil"], lw=2.5)]
-ax2.legend(hd, ["γ-sterilized", "TBA-treated", "Paddy soil", "Sandy soil"], loc="upper center", ncol=4, columnspacing=0.8, handlelength=1.5, borderaxespad=0.1)
-letter(ax2, "h")
+axi.legend(hd, ["γ-sterilized", "TBA-treated", "Paddy", "Sandy"], loc="upper center", ncol=2, columnspacing=0.6, handlelength=1.5, borderaxespad=0.1)
+letter(axi, "i")
 
-# ---------------- MEMORY: i–k Sennett et al. 2024 ----------------
-y += ROW; band(y, "Memory", "P4", "Sennett et al. 2024")
-ax1, ax2, ax3 = row(y, X3, W3)
+# ---------------- HISTORY (P4): j, k Sennett et al. 2024 ----------------
+y += ROW; band(y, "Memory", "P4", "Sennett et al. 2024", lab="History")
+ax1, ax2 = row(y, X2, W2)
 gas = rd("sennett_final_incubation_gas.csv"); plfa = rd("sennett_plfa_total.csv")
 for (h, r), q in gas.groupby(["history", "replicate"]):
     q = q.sort_values("time_h"); ax1.plot(q.time_h, q.N2O, color=HIST[h], lw=0.9)
 ax1.set_xlim(0, 112); ax1.set_ylim(0, 14); ax1.set_xticks([0, 25, 50, 75, 100]); ax1.set_yticks([0, 4, 8, 12])
-ax1.set_xlabel("Time in common challenge (h)"); ax1.set_ylabel("N$_2$O (µmol N per vial)")
-for h, yy in zip(HIST, (0.90, 0.79, 0.68)): ax1.text(0.88, yy, h, color=HIST[h], transform=ax1.transAxes, fontweight="bold")
-letter(ax1, "i")
+ax1.set_xlabel("Time in common challenge (h)"); ax1.set_ylabel("N$_2$O (µmol N vial$^{-1}$)")
+for h, yy in zip(HIST, (0.90, 0.79, 0.68)): ax1.text(0.92, yy, h, color=HIST[h], transform=ax1.transAxes, fontweight="bold")
+letter(ax1, "j")
 pl = plfa.assign(v=plfa.total_plfa_pmol_g / 1000)
 metrics = [("PLFA", None), ("Terminal\nN$_2$", "N2_final"), ("N$_2$O, 1–24 h", "N2O_integral_1_24h")]
 ax2.axvspan(1.5, 2.5, color="0.94", lw=0); ax2.axhline(1, color="0.6", lw=0.6, ls="--")
-for j, (lab, col) in enumerate(metrics):
+for j_, (lab, col) in enumerate(metrics):
     for k, h in enumerate(("SA", "LA")):
         vv = (pl[pl.treatment == h].v.values / pl[pl.treatment == "Ox"].v.mean()) if col is None else (M[M.history == h][col].values / M[M.history == "Ox"][col].mean())
-        x = j + (k - 0.5) * 0.32
+        x = j_ + (k - 0.5) * 0.32
         ax2.scatter(np.full(vv.size, x), vv, s=8, facecolor="white", edgecolor=HIST[h], lw=0.6, zorder=3)
-        ax2.scatter([x], [vv.mean()], s=20, color=HIST[h], zorder=4, label=f"{h}/Ox" if j == 0 else None)
+        ax2.scatter([x], [vv.mean()], s=20, color=HIST[h], zorder=4, label=f"{h}/Ox" if j_ == 0 else None)
 ax2.set_ylim(0.4, 1.75); ax2.set_yticks([0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6]); ax2.set_xticks(range(3), [m[0] for m in metrics]); ax2.set_xlim(-0.5, 2.5)
-ax2.text(0.5, 1.66, "biomass and\nterminal yield", ha="center", va="center", linespacing=1.0); ax2.text(2.0, 1.66, "accumulation", ha="center", va="center")
-ax2.set_ylabel("Ratio to Ox mean"); ax2.legend(loc="lower left", handletextpad=0.1, labelspacing=0.25); letter(ax2, "j")
-cw = rd("running_integrals_common_window.csv")
-cw["history"] = cw.series.str.split("_").str[0]
-piv = cw.pivot_table(index="end_h", columns="series", values="amount_time_integral")
-mean_h = {h: piv[[c for c in piv.columns if c.startswith(h + "_")]].mean(axis=1) for h in HIST}
-ax3.axhline(1, color="0.6", lw=0.6, ls="--")
-for c in piv.columns:
-    h = c.split("_")[0]
-    if h != "Ox": ax3.plot(piv.index, piv[c] / mean_h["Ox"], color=HIST[h], lw=0.5, alpha=0.45)
-for h in ("SA", "LA"): ax3.plot(piv.index, mean_h[h] / mean_h["Ox"], color=HIST[h], lw=1.6, label=f"{h}/Ox")
-for W in (12, 24):
-    r = float(np.interp(W, piv.index, mean_h["SA"] / mean_h["Ox"])); ax3.plot([W], [r], "o", ms=3, color="k", zorder=4)
-    ax3.text(W + (0 if W == 12 else -0.8), r * (0.72 if W == 12 else 1.05), f"{r:.2f}", ha="center" if W == 12 else "right", va="bottom" if W == 24 else "center")
-ax3.set_yscale("log"); ax3.set_ylim(0.2, 3); logticks(ax3.yaxis, [0.2, 0.5, 1, 2]); ax3.set_xlim(0, 25); ax3.set_xticks([0, 6, 12, 18, 24])
-ax3.set_xlabel("Window end W (h), from 1 h"); ax3.set_ylabel("N$_2$O amount × time / Ox")
-ax3.legend(loc="upper left", handlelength=1.2, labelspacing=0.25); letter(ax3, "k")
+ax2.text(0.5, 1.66, "biomass and terminal yield", ha="center", va="center"); ax2.text(2.0, 1.66, "accumulation", ha="center", va="center")
+ax2.set_ylabel("Ratio to Ox mean"); ax2.legend(loc="lower left", handletextpad=0.1, labelspacing=0.25); letter(ax2, "k")
 save(fig, OUT, "Figure_5_evidence")
-print("Fig5 written; SA/Ox 12 h", float(np.interp(12, piv.index, mean_h["SA"] / mean_h["Ox"])), "24 h", float(np.interp(24, piv.index, mean_h["SA"] / mean_h["Ox"])))
+print("Fig5 written", rho_c, rho_w)
