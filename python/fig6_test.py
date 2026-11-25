@@ -5,9 +5,8 @@ Reproduce Figure 6b's illustrative numerical comparison and retain the
 exact author-supplied full Figure 6 artwork from the revised manuscript.
 
 This is a proposed experiment, not a fitted model comparison. The lower and
-upper bounds in the CSV match the labels in the final BioRender figure.
-The unlabelled middle comparison's point is set to -0.17 for the independent
-reproduction of panel b; it is schematic and not an empirical estimate.
+upper bounds and point estimates in the CSV match the labels in the final
+BioRender figure (M2 - MH point: -0.20). All values are schematic, not empirical estimates.
 """
 from pathlib import Path
 import shutil
