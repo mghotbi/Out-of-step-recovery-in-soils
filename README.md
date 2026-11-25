@@ -12,7 +12,7 @@ Code and data for the Perspective "Hidden redox legacies in apparently recovered
 
 The Perspective introduces out-of-step recovery: bulk conditions (moisture, temperature, pH, O₂, Eₕ) can return while the internal state that sustains a function, its capacity (electron reserve), connectivity (access to it) and kinetics (reaction rates), recovers on different timescales from bulk conditions or among its components. Three limiting calculations (equations (1)–(3), main Box 1) show the consequences, and a predictive test (Fig. 6) asks whether measuring that state improves prediction. This repository contains only what is needed to reproduce the figures and quoted numbers; it is not a general modelling package.
 
-Release v1.0 is the version used for the submitted manuscript. Archive the release on Zenodo and cite its DOI in the Code availability statement before publication.  
+The submitted manuscript (Nature Communications, November 2026) corresponds to the current main branch. A tagged release (v1.0) will be created at acceptance, archived on Zenodo with a DOI and cited in the Code availability statement.  
 
 The repository reproduces every quantitative figure and every number quoted in the text:
 
@@ -88,3 +88,5 @@ One complete-record integral (long-anoxic history, Sennett et al.) differs from 
 ## Licence
 
 Code: MIT. Data extracts remain subject to the licences of the original publications.
+
+Note on Figure 6: `python/fig6_test.py` generates the base panels (`figures/Figure_6_test.*`) with the illustrative intervals used in the manuscript; the submitted figure (`figures/Figure_6_final_BioRender.png`) was finalized in BioRender with the same values.

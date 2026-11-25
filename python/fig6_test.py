@@ -33,7 +33,7 @@ L(0.08, 1.35, "b")
 ax = fig.add_axes([1.05 / FW, (FH - 3.05) / FH, 2.45 / FW, 1.55 / FH])
 ax.axvspan(-0.05, 0.05, color="#9CCBA6", alpha=0.55, lw=0)
 ax.axvline(-0.1, color=INK, ls=(0, (3, 2)), lw=0.8); ax.axvline(0, color="#4A5563", lw=0.7)
-for yy, (lo, mid, hi), c, lab in ((3, (-0.30, -0.22, -0.14), "#B22A1F", "M1 − M0"), (2, (-0.23, -0.15, -0.07), "#C2671B", "M2 − MH"), (1, (-0.03, 0.005, 0.04), "#5B2E9E", "M2 − M1")):
+for yy, (lo, mid, hi), c, lab in ((3, (-0.28, -0.22, -0.16), "#B22A1F", "M1 − M0"), (2, (-0.22, -0.175, -0.11), "#C2671B", "M2 − MH"), (1, (-0.02, 0.01, 0.04), "#5B2E9E", "M2 − M1")):
     ax.errorbar(mid, yy, xerr=[[mid - lo], [hi - mid]], fmt="o", ms=4.2, color=c, ecolor=c, elinewidth=1.8, capsize=2.2, capthick=1.0)
 ax.text(-0.103, 3.62, "−δ", ha="right", va="center", color=INK); ax.text(0.0, 3.62, "±ε", ha="center", va="center", color="#24642F", fontweight="bold", bbox=dict(boxstyle="square,pad=0.08", fc="#C9E3CF", ec="none"))
 ax.set_xlim(-0.42, 0.2); ax.set_ylim(0.45, 3.85); ax.set_yticks([1, 2, 3]); ax.set_yticklabels(["M2 − M1\n(+ history)", "M2 − MH\n(+ state,\ngiven history)", "M1 − M0\n(+ state)"])
