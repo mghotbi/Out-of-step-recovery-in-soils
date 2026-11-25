@@ -15,8 +15,9 @@ The Perspective introduces out-of-step recovery: bulk conditions (moisture, temp
 
 The repository provides the plotting materials and numerical checks for the analytical examples and the published-data reanalyses:
 
-| Output | Script | Inputs |
-|--------|---|---|
+| Figure 1 | fig1.R | data.csv |
+| Output &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Script | Inputs |
+|---|---|---|
 | Fig. 1 (schematic recovery, cumulative deviation, latent functional legacy and framework) | `python/fig1_concept.py` | analytical |
 | Fig. 5 (reanalysed published data, panels a–k) | `python/fig5_evidence.py` | `data/*.csv` |
 | Fig. 6 (proposed test of predictive sufficiency) | `python/fig6_test.py` | `artwork/Figure_6_final_author_artwork.png` and `data/fig6_illustrative_intervals.csv`; reproduces panel b numerically and copies the exact final full artwork |
