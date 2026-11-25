@@ -18,7 +18,6 @@ The repository provides the plotting materials and numerical checks for the anal
 | Output &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Script | Inputs |
 |:---|:---|:---|
 | Fig. 1 (schematic recovery, cumulative deviation, latent functional legacy and framework) | `python/fig1_concept.py` | analytical |
-| Fig. 1 (schematic recovery, cumulative deviation, latent functional legacy and framework) | `python/fig1_concept.py` | analytical |
 | Fig. 5 (reanalysed published data, panels a–k) | `python/fig5_evidence.py` | `data/*.csv` |
 | Fig. 6 (proposed test of predictive sufficiency) | `python/fig6_test.py` | `artwork/Figure_6_final_author_artwork.png` and `data/fig6_illustrative_intervals.csv`; reproduces panel b numerically and copies the exact final full artwork |
 | Supplementary Fig. 1 (illustrative example: a, relabelled author artwork; b, second-challenge N₂O escape) | `python/figS1a_relabel_artwork.py`, `python/figS1_worked_example.py b`, `python/figS1_compose.py` | `artwork/`; analytical (`python/theory.py`) |
