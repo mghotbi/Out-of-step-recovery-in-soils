@@ -15,9 +15,6 @@ fr = rd("li_2025_fe_fractions_primary_source.csv"); pc = fr[fr.fraction_index ==
 check("poorly crystalline plaque %", pc["Iron plaque"], 75, .5); check("poorly crystalline rhizo %", pc["Rhizosphere"], 30, 3); check("poorly crystalline bulk %", pc["Bulk soil"], 30, 3)
 g = rd("li_2025_goethite_eec_primary_source.csv").set_index("goethite").EEC
 check("goethite ratio", g["after 30 d diel redox cycling"] / g["without redox cycling"], 1.62, .005)
-fe = rd("patzner_panel_p_mineral_fe_oc_measured.csv"); fe = fe[fe.metric == "Reactive Fe"]
-sh = lambda st, hz: 100 * fe[(fe.stage == st) & (fe.horizon == hz)].value.iloc[0] / fe[fe.stage == st].value.sum()
-check("Patzner palsa mineral %", sh("Palsa", "Mineral horizon"), 91, .5); check("Patzner bog transition %", sh("Bog", "Transition zone"), 66, .5)
 diel = rd("li_2025_diel_feII_P_primary_source.csv")
 sw = lambda v, c: np.mean(np.abs(np.diff(diel[diel.compartment == c][v].values)))
 for v, c, q in (("FeII", "Rhizosphere", .40), ("FeII", "Bulk soil", .08), ("P", "Rhizosphere", .52), ("P", "Bulk soil", .14)):
@@ -41,3 +38,4 @@ for L, q in ((0, 1.09), (4, 1.73), (6, 2.44)): check(f"E({L})", float(th.escape(
 check("B(R=1)", float(th.carried_legacy(1)), .58, .005)
 out = pd.DataFrame(rows); out.to_csv(os.path.join(D, "verification_reported_values.csv"), index=False)
 print(out.to_string(index=False)); print("ALL PASS" if out.pass_.all() else "FAILURES")
+if not out.pass_.all(): raise SystemExit(1)

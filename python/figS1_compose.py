@@ -13,7 +13,8 @@ gap = int(4 * mm); H = bg.height + gap + pb.height
 fig = Image.new("RGB", (Wpx, H), "white"); fig.paste(bg, (0, 0)); fig.paste(pb, ((Wpx - pb.width) // 2, bg.height + gap))
 d = ImageDraw.Draw(fig)
 fp = "/usr/share/fonts/truetype/liberation2/LiberationSans-Bold.ttf"
-f = ImageFont.truetype(fp if os.path.exists(fp) else "Arial Bold.ttf", int(9 / 72 * DPI))
+from matplotlib import font_manager
+f = ImageFont.truetype(fp if os.path.exists(fp) else font_manager.findfont(font_manager.FontProperties(family="sans-serif",weight="bold")), int(9 / 72 * DPI))
 d.text((int(1 * mm), int(1 * mm)), "a", font=f, fill="black")
 for ext in ("png", "pdf"):
     fig.save(f"../figures/Supplementary_Figure_1_worked_example.{ext}", dpi=(DPI, DPI))

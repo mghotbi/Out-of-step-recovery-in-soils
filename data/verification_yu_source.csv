@@ -1,0 +1,141 @@
+check,computed,expected,tolerance,pass_
+F2-0.6 m: EAC_initial,0.26812,0.26812,2e-05,True
+F2-0.6 m: EAC_end,0.25394,0.25394,2e-05,True
+F2-0.6 m: EAC_lost,0.014180000000000026,0.01418,2e-05,True
+F2-0.6 m: EAC_lost_sd,0.01679144127226725,0.01679,2e-05,True
+F2-0.6 m: EDC_initial,0.02428,0.02428,2e-05,True
+F2-0.6 m: EDC_end,0.04345,0.04345,2e-05,True
+F2-0.6 m: EDC_gained,0.019170000000000003,0.01917,2e-05,True
+F2-0.6 m: EDC_gained_sd,0.00799801225305388,0.008,2e-05,True
+F2-0.6 m: clayFeII_pct_initial,12.7,12.7,2e-05,True
+F2-0.6 m: clayFeII_pct_end,50.6,50.6,2e-05,True
+F2-0.6 m: clay Fe(II) rose >5 percentage points,1.0,1.0,0.0,True
+W2-0.8 m: EAC_initial,0.13583,0.13583,2e-05,True
+W2-0.8 m: EAC_end,0.115,0.115,2e-05,True
+W2-0.8 m: EAC_lost,0.02083,0.02083,2e-05,True
+W2-0.8 m: EAC_lost_sd,0.00997685822290765,0.00998,2e-05,True
+W2-0.8 m: EDC_initial,0.02291,0.02291,2e-05,True
+W2-0.8 m: EDC_end,0.19626,0.19626,2e-05,True
+W2-0.8 m: EDC_gained,0.17335,0.17335,2e-05,True
+W2-0.8 m: EDC_gained_sd,0.003721558813185679,0.00372,2e-05,True
+W2-0.8 m: clayFeII_pct_initial,14.9,14.9,2e-05,True
+W2-0.8 m: clayFeII_pct_end,26.7,26.7,2e-05,True
+W2-0.8 m: clay Fe(II) rose >5 percentage points,1.0,1.0,0.0,True
+R4-1.0 m: EAC_initial,0.31477,0.31477,2e-05,True
+R4-1.0 m: EAC_end,0.22646,0.22646,2e-05,True
+R4-1.0 m: EAC_lost,0.08831,0.08831,2e-05,True
+R4-1.0 m: EAC_lost_sd,0.01948913800043501,0.01949,2e-05,True
+R4-1.0 m: EDC_initial,0.01532,0.01532,2e-05,True
+R4-1.0 m: EDC_end,0.02733,0.02733,2e-05,True
+R4-1.0 m: EDC_gained,0.01201,0.01201,2e-05,True
+R4-1.0 m: EDC_gained_sd,0.004094300917128589,0.00409,2e-05,True
+R4-1.0 m: clayFeII_pct_initial,39.4,39.4,2e-05,True
+R4-1.0 m: clayFeII_pct_end,53.7,53.7,2e-05,True
+R4-1.0 m: clay Fe(II) rose >5 percentage points,1.0,1.0,0.0,True
+R2-0.8 m: EAC_initial,0.17872,0.17872,2e-05,True
+R2-0.8 m: EAC_end,0.17776,0.17776,2e-05,True
+R2-0.8 m: EAC_lost,0.0009599999999999886,0.00096,2e-05,True
+R2-0.8 m: EAC_lost_sd,0.015169772575750766,0.01517,2e-05,True
+R2-0.8 m: EDC_initial,0.05489,0.05489,2e-05,True
+R2-0.8 m: EDC_end,0.10537,0.10537,2e-05,True
+R2-0.8 m: EDC_gained,0.050480000000000004,0.05048,2e-05,True
+R2-0.8 m: EDC_gained_sd,0.002128208306210649,0.00213,2e-05,True
+R2-0.8 m: clayFeII_pct_initial,46.9,46.9,2e-05,True
+R2-0.8 m: clayFeII_pct_end,46.3,46.3,2e-05,True
+R2-0.8 m: clay Fe(II) rose >5 percentage points,0.0,0.0,0.0,True
+F1-1.0 m: EAC_initial,0.26061,0.26061,2e-05,True
+F1-1.0 m: EAC_end,0.21894,0.21894,2e-05,True
+F1-1.0 m: EAC_lost,0.04167000000000001,0.04167,2e-05,True
+F1-1.0 m: EAC_lost_sd,0.02587664004464258,0.02588,2e-05,True
+F1-1.0 m: EDC_initial,0.02521,0.02521,2e-05,True
+F1-1.0 m: EDC_end,0.0437,0.0437,2e-05,True
+F1-1.0 m: EDC_gained,0.018490000000000003,0.01849,2e-05,True
+F1-1.0 m: EDC_gained_sd,0.0016218816233005415,0.00162,2e-05,True
+F1-1.0 m: clayFeII_pct_initial,17.2,17.2,2e-05,True
+F1-1.0 m: clayFeII_pct_end,12.7,12.7,2e-05,True
+F1-1.0 m: clay Fe(II) rose >5 percentage points,0.0,0.0,0.0,True
+F1-1.0 m: Fe_oxyhydroxide_fractions,0.22954,0.22953,2e-05,True
+F1-1.0 m: Fe_AAO_phyllosilicate_fractions,0.3117,0.3117,2e-05,True
+F1-1.0 m: HCl_FeIII,0.29672,0.29672,2e-05,True
+F1-1.0 m: HCl_FeIII_sd,0.01364,0.01364,2e-05,True
+F1-1.0 m: EAC,0.36793,0.36793,2e-05,True
+F1-1.0 m: EAC_sd,0.00519,0.00519,2e-05,True
+W1-0.2 m: Fe_oxyhydroxide_fractions,0.28571,0.28571,2e-05,True
+W1-0.2 m: Fe_AAO_phyllosilicate_fractions,0.37385,0.37385,2e-05,True
+W1-0.2 m: HCl_FeIII,0.3563,0.3563,2e-05,True
+W1-0.2 m: HCl_FeIII_sd,0.0046,0.0046,2e-05,True
+W1-0.2 m: EAC,0.3708,0.3708,2e-05,True
+W1-0.2 m: EAC_sd,0.0033,0.0033,2e-05,True
+W1-0.6 m: Fe_oxyhydroxide_fractions,0.22353,0.22353,2e-05,True
+W1-0.6 m: Fe_AAO_phyllosilicate_fractions,0.30781,0.30781,2e-05,True
+W1-0.6 m: HCl_FeIII,0.35545,0.35545,2e-05,True
+W1-0.6 m: HCl_FeIII_sd,0.00499,0.00499,2e-05,True
+W1-0.6 m: EAC,0.36109,0.36109,2e-05,True
+W1-0.6 m: EAC_sd,0.02723,0.02723,2e-05,True
+W1-1.0 m: Fe_oxyhydroxide_fractions,0.22191,0.22191,2e-05,True
+W1-1.0 m: Fe_AAO_phyllosilicate_fractions,0.34734,0.34734,2e-05,True
+W1-1.0 m: HCl_FeIII,0.43057,0.43057,2e-05,True
+W1-1.0 m: HCl_FeIII_sd,0.01243,0.01243,2e-05,True
+W1-1.0 m: EAC,0.34527,0.34527,2e-05,True
+W1-1.0 m: EAC_sd,0.00403,0.00403,2e-05,True
+W2-0.6 m: Fe_oxyhydroxide_fractions,0.27286,0.27286,2e-05,True
+W2-0.6 m: Fe_AAO_phyllosilicate_fractions,0.30974999999999997,0.30976,2e-05,True
+W2-0.6 m: HCl_FeIII,0.41419,0.41419,2e-05,True
+W2-0.6 m: HCl_FeIII_sd,0.02485,0.02485,2e-05,True
+W2-0.6 m: EAC,0.27594,0.27594,2e-05,True
+W2-0.6 m: EAC_sd,0.000162572,0.000162572,2e-05,True
+W3-0.2 m: Fe_oxyhydroxide_fractions,0.22839,0.22838,2e-05,True
+W3-0.2 m: Fe_AAO_phyllosilicate_fractions,0.2975,0.2975,2e-05,True
+W3-0.2 m: HCl_FeIII,0.31169,0.31169,2e-05,True
+W3-0.2 m: HCl_FeIII_sd,0.01018,0.01018,2e-05,True
+W3-0.2 m: EAC,0.29054,0.29054,2e-05,True
+W3-0.2 m: EAC_sd,0.00496,0.00496,2e-05,True
+R1-1 m: Fe_oxyhydroxide_fractions,0.14909,0.14909,2e-05,True
+R1-1 m: Fe_AAO_phyllosilicate_fractions,0.36675,0.36675,2e-05,True
+R1-1 m: HCl_FeIII,0.22314,0.22314,2e-05,True
+R1-1 m: HCl_FeIII_sd,0.00466,0.00466,2e-05,True
+R1-1 m: EAC,0.22326,0.22326,2e-05,True
+R1-1 m: EAC_sd,0.00392,0.00392,2e-05,True
+R2-1 m: Fe_oxyhydroxide_fractions,0.11993,0.11992,2e-05,True
+R2-1 m: Fe_AAO_phyllosilicate_fractions,0.3726,0.37259,2e-05,True
+R2-1 m: HCl_FeIII,0.2253,0.2253,2e-05,True
+R2-1 m: HCl_FeIII_sd,0.00658,0.00658,2e-05,True
+R2-1 m: EAC,0.17935,0.17935,2e-05,True
+R2-1 m: EAC_sd,0.0173,0.0173,2e-05,True
+R2-7 m: Fe_oxyhydroxide_fractions,0.15838999999999998,0.15838,2e-05,True
+R2-7 m: Fe_AAO_phyllosilicate_fractions,0.41762,0.41761,2e-05,True
+R2-7 m: HCl_FeIII,0.19075,0.19075,2e-05,True
+R2-7 m: HCl_FeIII_sd,0.00431,0.00431,2e-05,True
+R2-7 m: EAC,0.12595,0.12595,2e-05,True
+R2-7 m: EAC_sd,0.00431,0.00431,2e-05,True
+C1-3.4 m: Fe_oxyhydroxide_fractions,0.13513999999999998,0.13515,2e-05,True
+C1-3.4 m: Fe_AAO_phyllosilicate_fractions,0.33465,0.33465,2e-05,True
+C1-3.4 m: HCl_FeIII,0.34516,0.34516,2e-05,True
+C1-3.4 m: HCl_FeIII_sd,0.00321,0.00321,2e-05,True
+C1-3.4 m: EAC,0.27752,0.27752,2e-05,True
+C1-3.4 m: EAC_sd,0.000768854,0.000768854,2e-05,True
+C2-0.8 m: Fe_oxyhydroxide_fractions,0.09073,0.09073,2e-05,True
+C2-0.8 m: Fe_AAO_phyllosilicate_fractions,0.45054,0.45054,2e-05,True
+C2-0.8 m: HCl_FeIII,0.19623,0.19623,2e-05,True
+C2-0.8 m: HCl_FeIII_sd,0.000456057,0.000456057,2e-05,True
+C2-0.8 m: EAC,0.23362,0.23362,2e-05,True
+C2-0.8 m: EAC_sd,0.00921,0.00921,2e-05,True
+C3-3.0 m: Fe_oxyhydroxide_fractions,0.15350000000000003,0.1535,2e-05,True
+C3-3.0 m: Fe_AAO_phyllosilicate_fractions,0.3031,0.3031,2e-05,True
+C3-3.0 m: HCl_FeIII,0.2595,0.2595,2e-05,True
+C3-3.0 m: HCl_FeIII_sd,0.00384,0.00384,2e-05,True
+C3-3.0 m: EAC,0.19447,0.19447,2e-05,True
+C3-3.0 m: EAC_sd,0.00323,0.00323,2e-05,True
+C4-1.5 m: Fe_oxyhydroxide_fractions,0.09735999999999999,0.09737,2e-05,True
+C4-1.5 m: Fe_AAO_phyllosilicate_fractions,0.45867,0.45868,2e-05,True
+C4-1.5 m: HCl_FeIII,0.19058,0.19058,2e-05,True
+C4-1.5 m: HCl_FeIII_sd,0.00123,0.00123,2e-05,True
+C4-1.5 m: EAC,0.21847,0.21847,2e-05,True
+C4-1.5 m: EAC_sd,0.00247,0.00247,2e-05,True
+Fe_oxyhydroxide_fractions: R2,0.4965343393601157,0.497,0.0006,True
+Fe_oxyhydroxide_fractions: P,0.007157371621708399,0.007,0.0006,True
+Fe_AAO_phyllosilicate_fractions: R2,0.2203245506477084,0.22,0.0006,True
+Fe_AAO_phyllosilicate_fractions: P,0.10560905801220827,0.106,0.0006,True
+HCl_FeIII: R2,0.5565707426679032,0.557,0.0006,True
+HCl_FeIII: P,0.0034069910562760353,0.003,0.0006,True
+Mean EAC / HCl Fe(III),0.9264615638119209,0.93,0.005,True

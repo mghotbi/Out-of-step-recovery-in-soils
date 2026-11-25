@@ -1,58 +1,54 @@
-"""Figure 6 | A test of predictive sufficiency (schematic; no data). Minimal-text version; details are in the legend.
-Run from python/:  python fig6_test.py -> ../figures/Figure_6_test.{pdf,png,svg}"""
-import os
-from matplotlib.patches import FancyBboxPatch, Rectangle
-from style import plt, FS, FS_LETTER, save
-OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "figures")
-FW, FH = 7.2, 3.55
-fig = plt.figure(figsize=(FW, FH))
-INK, MUTE = "#1E252E", "#444D58"
-def L(x, y, s): fig.text(x / FW, (FH - y) / FH, s, fontsize=FS_LETTER, fontweight="bold", va="top", color=INK)
+"""Model definitions follow the manuscript: M0 = bulk conditions, pre-challenge (present) function and
+challenge forcing; M1 = M0 + internal state; MH = M0 + history; M2 = M0 + both.
 
-# ---------------- a ----------------
-L(0.08, 0.05, "a")
-steps = [("1", "Randomize", "histories", ("#DDE2E8", "#4A5563")),
-         ("2", "Recover", "vary interval Δ", ("#E3D6F0", "#6A4C9C")),
-         ("3", "Measure", "bulk + state z", ("#F8E0B4", "#A8661A")),
-         ("4", "Challenge", "cumulative N$_2$O-N", ("#F4C9C3", "#A3312A")),
-         ("5", "Predict", "held-out units", ("#CFE0F1", "#2F5F8F"))]
-ax = fig.add_axes([0.3 / FW, (FH - 0.82) / FH, (FW - 0.42) / FW, 0.72 / FH]); ax.set_axis_off(); ax.set_xlim(0, 100); ax.set_ylim(0, 10)
-w, g = 18.0, 2.5
-for i, (n, ttl, sub, (fc, ec)) in enumerate(steps):
-    x = i * (w + g)
-    ax.add_patch(FancyBboxPatch((x, 0.3), w, 9.2, boxstyle="round,pad=0,rounding_size=1.0", fc=fc, ec=ec, lw=0.9))
-    ax.text(x + w / 2, 6.4, f"{n}  {ttl}", ha="center", va="center", fontweight="bold", color=ec)
-    ax.text(x + w / 2, 3.2, sub, ha="center", va="center", color=INK)
-    if i < 4: ax.plot(x + w + g / 2, 4.9, marker=">", ms=3.6, color=INK, mec="none")
-ax2 = fig.add_axes([0.3 / FW, (FH - 1.12) / FH, (FW - 0.42) / FW, 0.22 / FH]); ax2.set_axis_off(); ax2.set_xlim(0, 100); ax2.set_ylim(0, 1)
-for x, m, dsc in ((0, "M0", "bulk + challenge"), (25, "M1", "M0 + state"), (50, "MH", "M0 + history"), (75, "M2", "M0 + state + history")):
-    ax2.text(x, 0.5, m, fontweight="bold", va="center", color=INK); ax2.text(x + 3.6, 0.5, dsc, va="center", color=INK)
+Reproduce Figure 6b's illustrative numerical comparison and retain the
+exact author-supplied full Figure 6 artwork from the revised manuscript.
 
-# ---------------- b ----------------
-L(0.08, 1.35, "b")
-ax = fig.add_axes([1.05 / FW, (FH - 3.05) / FH, 2.45 / FW, 1.55 / FH])
-ax.axvspan(-0.05, 0.05, color="#9CCBA6", alpha=0.55, lw=0)
-ax.axvline(-0.1, color=INK, ls=(0, (3, 2)), lw=0.8); ax.axvline(0, color="#4A5563", lw=0.7)
-for yy, (lo, mid, hi), c, lab in ((3, (-0.28, -0.22, -0.16), "#B22A1F", "M1 − M0"), (2, (-0.22, -0.175, -0.11), "#C2671B", "M2 − MH"), (1, (-0.02, 0.01, 0.04), "#5B2E9E", "M2 − M1")):
-    ax.errorbar(mid, yy, xerr=[[mid - lo], [hi - mid]], fmt="o", ms=4.2, color=c, ecolor=c, elinewidth=1.8, capsize=2.2, capthick=1.0)
-ax.text(-0.103, 3.62, "−δ", ha="right", va="center", color=INK); ax.text(0.0, 3.62, "±ε", ha="center", va="center", color="#24642F", fontweight="bold", bbox=dict(boxstyle="square,pad=0.08", fc="#C9E3CF", ec="none"))
-ax.set_xlim(-0.42, 0.2); ax.set_ylim(0.45, 3.85); ax.set_yticks([1, 2, 3]); ax.set_yticklabels(["M2 − M1\n(+ history)", "M2 − MH\n(+ state,\ngiven history)", "M1 − M0\n(+ state)"])
-ax.tick_params(axis="y", length=0, pad=4); ax.spines["left"].set_visible(False)
-ax.set_xticks([-0.4, -0.2, 0, 0.2]); ax.set_xticklabels(["−0.4", "−0.2", "0", "0.2"])
-ax.set_xlabel("Change in held-out error\n(MAE, log$_{10}$ cumulative N$_2$O-N)")
-
-# ---------------- c ----------------
-L(3.95, 1.35, "c")
-ax = fig.add_axes([3.95 / FW, (FH - 3.35) / FH, 3.15 / FW, 1.95 / FH]); ax.set_axis_off(); ax.set_xlim(0, 1); ax.set_ylim(0, 1)
-x0, yb, cw, ch, g = 0.30, 0.05, 0.34, 0.33, 0.02
-cells = [(0, 1, "Measured state\nadequate for the\ntested prediction", ("#BFE0C6", "#2E7D3E")), (1, 1, "State or model\nincomplete", ("#DCCDEF", "#6A4C9C")),
-         (0, 0, "Bulk model\nadequate", ("#D9DEE4", "#4A5563")), (1, 0, "Carrier\nunresolved", ("#F4C9C3", "#A3312A"))]
-for cx, cy, txt, (fc, ec) in cells:
-    X = x0 + cx * (cw + g); Y = yb + cy * (ch + g)
-    ax.add_patch(Rectangle((X, Y), cw, ch, fc=fc, ec=ec, lw=0.9)); ax.text(X + cw / 2, Y + ch / 2, txt, ha="center", va="center", linespacing=1.15, color=INK)
-ax.text(x0 + cw + g / 2, 0.93, "History improves prediction?", ha="center", va="center", fontweight="bold", color=INK)
-ax.text(x0 + cw / 2, 0.81, "No", ha="center", va="center", color=INK); ax.text(x0 + 1.5 * cw + g, 0.81, "Yes", ha="center", va="center", color=INK)
-ax.text(0.0, yb + ch + g / 2, "State\nuseful?", ha="left", va="center", fontweight="bold", color=INK, linespacing=1.1)
-ax.text(x0 - 0.03, yb + 1.5 * ch + g, "Yes", ha="right", va="center", color=INK)
-ax.text(x0 - 0.03, yb + ch / 2, "No", ha="right", va="center", color=INK)
-save(fig, OUT, "Figure_6_test")
+This is a proposed experiment, not a fitted model comparison. The lower and
+upper bounds in the CSV match the labels in the final BioRender figure.
+The unlabelled middle comparison's point is set to -0.17 for the independent
+reproduction of panel b; it is schematic and not an empirical estimate.
+"""
+from pathlib import Path
+import shutil
+import numpy as np
+import pandas as pd
+from style import plt, save
+ROOT=Path(__file__).resolve().parent.parent
+OUT=ROOT/"figures"
+OUT.mkdir(exist_ok=True)
+df=pd.read_csv(ROOT/"data"/"fig6_illustrative_intervals.csv")
+# Numerical classification of the illustrated intervals.
+delta,eps=.10,.05
+assert (df.iloc[:2].upper < -delta).all(), "Illustrative state gains must exceed the stated margin"
+assert df.iloc[2].lower >= -eps and df.iloc[2].upper <= eps
+assert ((df.lower <= df.estimate) & (df.estimate <= df.upper)).all()
+fig,ax=plt.subplots(figsize=(5.0,2.25))
+fig.subplots_adjust(left=.31,right=.97,bottom=.24,top=.84)
+ax.axvspan(-eps,eps,color="#DBDBDC",zorder=0)
+ax.axvline(-delta,color="#444D58",ls="--",lw=.8)
+ax.axvline(0,color="#888888",lw=.6)
+cols=["#CC895F","#A37965","#87529B"]; labels=["−0.22",""," +0.01"]
+def fmt(x):
+    if x==0:return "0"
+    return f"{x:+.2f}".replace("-","−")
+for i,row in df.iterrows():
+    y=2-i
+    ax.errorbar(row.estimate,y,xerr=[[row.estimate-row.lower],[row.upper-row.estimate]],
+                fmt="o",ms=5.2,color=cols[i],elinewidth=1.6,capsize=3,zorder=3)
+    if labels[i].strip():ax.text(row.estimate,y+.18,labels[i],color=cols[i],ha="center",va="bottom",fontweight="bold")
+    ax.text(row.lower,y-.18,fmt(row.lower),ha="center",va="top")
+    ax.text(row.upper,y-.18,fmt(row.upper),ha="center",va="top")
+ax.set(yticks=[2,1,0],yticklabels=["M1 − M0\n(+ internal state)","M2 − MH\n(+ state, history known)","M2 − M1\n(+ history)"],
+       xlim=(-.40,.20),ylim=(-.42,2.58),xlabel="Change in held-out prediction error\n(MAE, log$_{10}$ cumulative N$_2$O-N)")
+ax.tick_params(axis="y",length=0)
+ax.spines["left"].set_visible(False)
+ax.set_xticks(np.arange(-.4,.201,.1))
+ax.text(-delta,2.62,"−δ (−0.10)",ha="right",va="bottom")
+ax.text(0,2.62,"±ε (±0.05)",ha="center",va="bottom")
+save(fig,str(OUT),"Figure_6b_intervals")
+# Complete figure includes author-created BioRender panels; preserve the
+# exact approved artwork rather than pretending it is fully code-generated.
+source=ROOT/"artwork"/"Figure_6_final_author_artwork.png"
+shutil.copyfile(source,OUT/"Figure_6_test.png")
+print("Figure 6: preserved exact full artwork; Figure 6b interval checks passed.")

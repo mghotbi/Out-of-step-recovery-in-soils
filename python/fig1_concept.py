@@ -4,7 +4,7 @@ Panels
   a  Delayed functional recovery: bulk indicators recover before connectivity, capacity and kinetics.
   b  Cumulative functional deviation: two trajectories that converge on the same endpoint
      accumulate different signed deviations (redox debt, D_W).
-  c  Latent functional legacy: two soils with identical bulk conditions and function before a
+  c  Latent functional legacy: two soils (restored, legacy) with identical bulk conditions and function before a
      common second disturbance, but a displaced internal property in soil B, respond differently.
   d  Internal redox state (capacity, connectivity, kinetics) and the memory-update rule.
 
@@ -179,8 +179,8 @@ def panel_c(fig):
     mid.plot(t[before], state_b[before], color=SOIL_B, lw=1.7, ls=(0, (4, 2)), zorder=3)
     for y, c in ((state_a, SOIL_A), (state_b, SOIL_B)):
         mid.plot(check, np.interp(check, t, y), "o", ms=3.4, color=c, zorder=4)
-    mid.text(4.52, 1.08, "State restored (A)", color=SOIL_A, ha="center", va="bottom")
-    mid.text(4.5, 0.38, "Persistent legacy (B)", color=SOIL_B, ha="center", va="center")
+    mid.text(4.52, 1.08, "State restored", color=SOIL_A, ha="center", va="bottom")
+    mid.text(4.5, 0.38, "Persistent legacy", color=SOIL_B, ha="center", va="center")
     mid.annotate("", xy=(check - 0.16, 0.98), xytext=(check - 0.16, 0.66),
                  arrowprops=dict(arrowstyle="<->", lw=0.8, color=SOIL_B))
     mid.text(9.65, 0.73, "Candidate carrier\nmeasured before challenge", color="#666666",
@@ -191,9 +191,9 @@ def panel_c(fig):
     bottom.plot(t, func_b, color=SOIL_B, lw=1.65, ls=(0, (4, 2)), zorder=4)
     bottom.plot(check, 1, "o", color=SOIL_A, ms=3, zorder=5)
     bottom.text(5.35, 0.53, "Same present function", color="#414141", ha="center", va="center")
-    for lab, y_lab, y, c in (("A", 0.72, func_a, SOIL_A), ("B", 0.23, func_b, SOIL_B)):
+    for lab, y_lab, y, c in (("restored", 0.72, func_a, SOIL_A), ("legacy", 0.23, func_b, SOIL_B)):
         bottom.annotate(lab, xy=(8.6, np.interp(8.6, t, y)), xytext=(9.0, y_lab), color=c,
-                        fontsize=FS + 1, fontweight="bold",
+                        fontweight="bold",
                         arrowprops=dict(arrowstyle="-", lw=0.65, color=c))
     bottom.set_xlabel("Time across disturbances (arbitrary units)", labelpad=3)
 
@@ -268,7 +268,7 @@ def main():
     for ext in ("pdf", "svg", "png"):
         fig.savefig(os.path.join(OUT, f"{NAME}.{ext}"), dpi=600, facecolor="white")
     plt.close(fig)
-    print(f"Figure 1 written to {OUT}: t_bulk={t_bulk:.2f}, t_F={t_func:.2f}, "
+    print(f"Figure 1 written to figures/: t_bulk={t_bulk:.2f}, t_F={t_func:.2f}, "
           f"|D_W| fast={debt_fast:.2f}, slow={debt_slow:.2f}; panel c checks passed.")
 
 

@@ -24,11 +24,6 @@ diel <- rd("li_2025_diel_feII_P_primary_source.csv")
 sw <- function(v, comp) mean(abs(diff(diel[diel$compartment == comp, v])))
 for (a in list(c("FeII", "Rhizosphere", .40), c("FeII", "Bulk soil", .08), c("P", "Rhizosphere", .52), c("P", "Bulk soil", .14)))
   check(paste(a[1], "change", a[2], "/ plaque"), sw(a[1], a[2]) / sw(a[1], "Iron plaque"), as.numeric(a[3]), .005)
-# Patzner et al. 2020: reactive-Fe horizon shares
-fe <- rd("patzner_panel_p_mineral_fe_oc_measured.csv"); fe <- fe[fe$metric == "Reactive Fe", ]
-sh <- function(st, hz) 100 * fe$value[fe$stage == st & fe$horizon == hz] / sum(fe$value[fe$stage == st])
-check("palsa mineral horizon %", sh("Palsa", "Mineral horizon"), 91, .5)
-check("bog transition zone %", sh("Bog", "Transition zone"), 66, .5)
 # Sennett et al. 2024: half-times, correlations, ratios
 M <- rd("fig5_derived_metrics.csv")
 check("N2 half-time min (h)", min(M$N2_half_time_h), 14, .5); check("N2 half-time max (h)", max(M$N2_half_time_h), 78, .5)

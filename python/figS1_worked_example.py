@@ -40,5 +40,5 @@ PANEL = sys.argv[1] if len(sys.argv) > 1 else ""   # pass "b" once the artwork p
 if PANEL:
     letter(ax, PANEL, x=-0.10)
 save(fig, OUT, "Supplementary_Figure_1_worked_example" + ("_panel_" + PANEL if PANEL else ""))
-print("A", round(EA, 3), "B short", round(escape(L0*np.exp(-short/Tm)), 3), "lag", round(L0*np.exp(-short/Tm), 2),
-      "B long", round(escape(L0*np.exp(-long_/Tm)), 3), "lag", round(L0*np.exp(-long_/Tm), 2))
+print("Core B (active sink)", round(EA, 3), "Core A short (delayed sink)", round(escape(L0*np.exp(-short/Tm)), 3), "lag", round(L0*np.exp(-short/Tm), 2),
+      "Core A long", round(escape(L0*np.exp(-long_/Tm)), 3), "lag", round(L0*np.exp(-long_/Tm), 2))

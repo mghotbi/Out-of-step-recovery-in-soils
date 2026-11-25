@@ -1,7 +1,7 @@
 """Figure 5 | Published data show that redox pools and responses change, but not why.
 Bands give the framework component and the prediction each reanalysis addresses (P1, P3, P4).
 Every panel shows source data from ONE study; no panel combines studies. Studies: Li et al. 2025 (a-c, e-f),
-Yu et al. 2026 (d; source data workbooks MOESM4/MOESM5), Sennett et al. 2024 (g, i-k), Liu et al. 2025 (h).
+Yu et al. 2026 (d; source data workbooks MOESM4/MOESM5), Sennett et al. 2024 (g, h, j, k), Liu et al. 2025 (i).
 Run from python/:  python fig5_evidence.py -> ../figures/Figure_5_evidence.{pdf,png,svg}"""
 import os, numpy as np, pandas as pd
 from matplotlib.patches import Rectangle
@@ -28,7 +28,7 @@ X4, W4 = (0.52, 2.30, 4.08, 5.86), 1.20
 X2, W2 = (0.62, 4.15), 2.75
 X3, W3 = (0.55, 2.95, 5.35), 1.62
 
-# ---------------- CAPACITY: a–c Li et al. 2025; d Patzner et al. 2020 ----------------
+# ---------------- CAPACITY: a–c Li et al. 2025; d Yu et al. 2026 ----------------
 y = 0.05; band(y, "Capacity", "P1", "a–c, Li et al. 2025;  d, Yu et al. 2026")
 ax1, ax2, ax3, ax4 = row(y, X4, W4)
 eec = rd("li_2025_eec_primary_source.csv").set_index("compartment")
