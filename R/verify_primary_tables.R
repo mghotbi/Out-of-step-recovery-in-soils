@@ -1,5 +1,5 @@
 # Verify Supplementary Figure 4 source data in two stages; stops with an error on any failure. Base R only.
-# Stage 1  primary workbook -> extracted tables (Supplementary Figure 4a-f; stored cell values, no recalculation)
+# Stage 1  primary workbooks -> extracted tables (stored cell values, no recalculation)
 # Stage 2  extracted tables -> ../data/source_data_supplementary_figure4.csv (panel-level source data)
 # The small OOXML reader below handles the cells used here; it is not a general Excel parser.
 # Run from the R/ folder:  source("verify_primary_tables.R")
