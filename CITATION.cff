@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite the article and this archived release."
+title: "Reproducibility materials for Hidden redox legacies in apparently recovered soils"
+version: "1.0"
+date-released: "2026-11-28"
+doi: "10.5281/zenodo.24583033"
+license: MIT
+repository-code: "https://github.com/mghotbi/Out-of-step-recovery-in-soils"
+authors:
+  - family-names: Ghotbi
+    given-names: Mitra
+  - family-names: Kolody
+    given-names: Bethany C.
+  - family-names: Ghotbi
+    given-names: Marjan
+  - family-names: Breed
+    given-names: Martin F.
+  - family-names: Gilbert
+    given-names: Jack A.
+  - family-names: Holtgrewe-Stukenbrock
+    given-names: Eva
+keywords: [soil redox, resilience, legacy effects, nitrous oxide, soil–plant–microbiome]

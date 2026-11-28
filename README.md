@@ -4,6 +4,7 @@
 [![Soil redox resilience](https://img.shields.io/badge/Topic-Soil%20redox%20resilience-397F89?style=flat-square)](#hidden-redox-legacies-in-apparently-recovered-soils)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white)](#reproduce)
 [![R](https://img.shields.io/badge/R-Base%20R-276DC3?style=flat-square&logo=r&logoColor=white)](#reproduce)
+[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.24583033-1682D4?style=flat-square)](https://doi.org/10.5281/zenodo.24583033)
 [![Code license](https://img.shields.io/badge/Code-MIT-8FBC8F?style=flat-square)](#licence)
 [![Data licenses](https://img.shields.io/badge/Data-Source%20licenses-lightgrey?style=flat-square)](#source-data-and-reuse)
 
@@ -12,23 +13,24 @@ Code and data for the Perspective "Hidden redox legacies in apparently recovered
 
 The Perspective introduces out-of-step recovery: bulk conditions (moisture, temperature, pH, O₂, Eₕ) can return while the internal state that sustains a function, its capacity (electron reserve), connectivity (access to it) and kinetics (reaction rates), recovers on different timescales from bulk conditions or among its components. Three limiting calculations (equations (1)–(3), main Box 1) show the consequences, and a predictive test (Fig. 6) asks whether measuring that state improves prediction. This repository contains only what is needed to reproduce the figures and quoted numbers; it is not a general modelling package.
 
+This release (v1.0, 28 November 2026) corresponds to the submitted manuscript and is archived on Zenodo: https://doi.org/10.5281/zenodo.24583033 (cited in the Data and Code availability statements).
 
 The repository provides the plotting materials and numerical checks for the analytical examples and the published-data reanalyses:
 
-| Output and description | Script | Inputs |
-|:---|:---|:---|
-| **Fig. 1** — Schematic recovery, cumulative deviation, latent functional legacy and framework | [Python script](python/fig1_concept.py) | Analytical |
-| **Fig. 5** — Reanalysed published data, panels a–k | [Python script](python/fig5_evidence.py) | [CSV files](data/) |
-| **Fig. 6** — Proposed test of predictive sufficiency | [Python script](python/fig6_test.py) | [Final artwork](artwork/Figure_6_final_author_artwork.png)<br>[Illustrative intervals](data/fig6_illustrative_intervals.csv) |
-| **Supplementary Fig. 1** — Illustrative example: (a) relabelled author artwork; (b) second-challenge N₂O escape | [Relabel artwork](python/figS1a_relabel_artwork.py)<br>[Worked example](python/figS1_worked_example.py) (argument `b`)<br>[Compose figure](python/figS1_compose.py) | [Artwork](artwork/)<br>[Analytical model](python/theory.py) |
-| **Supplementary Fig. 2** — Restricted-model consequences P1–P4 | [Python script](python/figS2_predictions.py) | [Analytical model](python/theory.py) |
-| **Supplementary Fig. 3** — Capacity versus Fe inventory, Yu et al. (2026) | [Python script](python/figS3_capacity_inventory.py) | [Fe inventory and EAC](data/yu_2026_fe_fractions_eac.csv) |
-| **Supplementary Fig. 4** — Nitrogen trajectories | [Python script](python/figS4_reanalysis_detail.py) | [Fig. 5 data](data/) |
-| **LA integral audit** — Supplementary Note 2 | [Python script](python/la_integral_audit.py) | [Incubation data](data/sennett_final_incubation_gas.csv) |
-| **Analytical and empirical numerical checks** | [Python](python/verify_reported_values.py)<br>[R](R/verify_reported_values.R) | [CSV files](data/) |
-| **Fig. 5d and Supplementary Fig. 3** — Source-workbook audit | [Python script](python/verify_yu_source.py) | [Source workbooks](data/primary_source_workbooks/)<br>[Extracted data](data/) |
+| Output | Script | Inputs |
+|---|---|---|
+| Fig. 1 (schematic recovery, cumulative deviation, latent functional legacy and framework) | `python/fig1_concept.py` | analytical |
+| Fig. 5 (reanalysed published data, panels a–k) | `python/fig5_evidence.py` | `data/*.csv` |
+| Fig. 6 (proposed test of predictive sufficiency) | `python/fig6_test.py` | `artwork/Figure_6_final_author_artwork.png` and `data/fig6_illustrative_intervals.csv`; reproduces panel b numerically and copies the exact final full artwork |
+| Supplementary Fig. 1 (illustrative example: a, relabelled author artwork; b, second-challenge N₂O escape) | `python/figS1a_relabel_artwork.py`, `python/figS1_worked_example.py b`, `python/figS1_compose.py` | `artwork/`; analytical (`python/theory.py`) |
+| Supplementary Fig. 2 (restricted-model consequences P1–P4) | `python/figS2_predictions.py` | analytical (`python/theory.py`) |
+| Supplementary Fig. 3 (capacity vs Fe inventory, Yu et al. 2026) | `python/figS3_capacity_inventory.py` | `data/yu_2026_fe_fractions_eac.csv` |
+| Supplementary Fig. 4 (nitrogen trajectories) | `python/figS4_reanalysis_detail.py` | `data/fig5_*.csv` |
+| LA integral audit (Supplementary Note 2) | `python/la_integral_audit.py` | `data/sennett_final_incubation_gas.csv` |
+| Analytical and selected empirical numerical checks | `python/verify_reported_values.py`, `R/verify_reported_values.R` | `data/*.csv` |
+| Fig. 5d and Supplementary Fig. 3 source-workbook audit | `python/verify_yu_source.py` | Yu et al. source workbooks MOESM4/MOESM5 and extracted CSVs |
 
-Figs 2–4 are original artwork and are not generated by code; the source artwork for Supplementary Fig. 1a is in `artwork/`. The exact full Fig. 6, including its BioRender panels, is retained as author artwork; the numerical intervals in panel b are independently regenerated. The middle comparison’s point estimate is not numerically labelled in the author figure; the regeneration uses −0.17 for that schematic point. Bounds match the displayed values exactly. The illustrative intervals are not fitted estimates or empirical data.
+Figs 2–4 are original artwork and are not generated by code; the source artwork for Supplementary Fig. 1a is in `artwork/`. The exact full Fig. 6, including its BioRender panels, is retained as author artwork; the numerical intervals in panel b are independently regenerated. All bounds and point estimates match the values printed in the final figure. The illustrative intervals are not fitted estimates or empirical data.
 
 ## Reproduce
 
